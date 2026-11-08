@@ -382,3 +382,77 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
 .tutor-chloe{background:linear-gradient(150deg,#e9e5ed,#c6c3d3)}
 @media(max-width:900px){.landing-tutor-roster{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.landing-tutor-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.landing-tutor-roster-card{min-height:220px}.landing-tutor-roster-card>div{padding:9px}.landing-tutor-roster-card>div>b{font-size:18px}.landing-tutor-roster-card>div>small{font-size:7px}}
+
+
+/* 2026 brand refresh — Kotoba Quest palette, learning loop and anime tutor identities */
+:root{--bg:#f5f1e8;--panel:#fffdf8;--ink:#172330;--muted:#71808a;--line:#e4ddd1;--purple:#d56b56;--purple-dark:#b94e3b;--purple-soft:#fae9e3;--pink:#e7a18c;--mint:#78b99c;--gold:#d7a44b;--shadow:0 16px 45px #17233012}
+body{background:var(--bg);color:var(--ink)}
+.topbar{background:#152332;color:#f7f3e9;border-bottom:1px solid #ffffff18}
+.brand{color:#fff}.brand-mark{background:#d56b56;color:#fff}.brand i{color:#e8a18c}
+.stat-pill{background:#1d3040;border-color:#ffffff20;color:#d8dedc}.stat-pill b{color:#fff}
+.stat-pill.xp{color:#f0b17e}.stat-pill.coins{color:#e7bd68}.avatar-button{background:linear-gradient(145deg,#d56b56,#e5a18b)}
+.nav-item{color:#687782}.nav-item:hover,.nav-item.active{background:#fae9e3;color:#b94e3b}.nav-item.active{box-shadow:inset 3px 0 #d56b56}
+.side-card{background:linear-gradient(145deg,#f7e6dc,#fff7eb);border-color:#edd8ca}.side-card-icon{color:#d56b56}.small-cta,.primary-button,.chat-compose button{background:#d56b56}.primary-button:hover{background:#b94e3b}
+.secondary-button{border-color:#e8c9bc;color:#b94e3b}
+.hero-card{background:linear-gradient(105deg,#152332f5,#263e4ff0 58%,#9c5b51c9),url('/assets/scenarios/japanese_classroom.webp') center/cover}
+.hero-editorial{background:radial-gradient(ellipse at 80% 65%,#d56b56 0,transparent 42%),linear-gradient(155deg,#152332,#263e4f 72%,#9c5b51)}
+.chapter-tag{background:#d56b5638;color:#ffe5d8;border:1px solid #e8a18c55}
+.hero-button{color:#b94e3b}.hero-copy h2 em{color:#f0a58d}
+.unit-pill,.unit-heading,.world-tags span{background:#fae9e3;color:#b94e3b}
+.unit-heading{border-color:#f0d8cd}.unit-number{color:#b94e3b}
+.lesson-node{background:#fae9e3;color:#b94e3b;border-color:#f0d8cd}.lesson-node.current{background:#d56b56;border-color:#d56b56;box-shadow:0 0 0 5px #d56b5620}
+.start-button{color:#b94e3b;border-color:#edd8ce}.lesson-info b{color:#263746}
+.profile-avatar,.leader-avatar{background:#fae9e3;color:#b94e3b}
+.profile-xp b,.leader-row strong{color:#b94e3b}
+.tiny-bar span,.daily-progress span{background:linear-gradient(90deg,#d56b56,#e8a18c)}
+.quote-card{background:linear-gradient(140deg,#fff1e8,#f8e9dc)}.quote-spark{color:#d56b56}
+.chat-bubble.assistant{background:#f8e9e2;color:#674d48}.chat-bubble.user{background:#d56b56}
+.chat-compose input:focus{border-color:#d56b56}
+.learning-pillars{margin:17px 0 22px}
+.quest-control-panel{margin:18px 0 20px;padding:19px;border-radius:17px;background:#fffdf8;border:1px solid #e6d9cc;box-shadow:0 12px 28px #1723300a}
+.quest-control-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:15px}
+.quest-control-head h2{font:800 17px Manrope;margin:5px 0 3px;color:#172330}
+.quest-control-head p{font-size:10px;color:#78858b;margin:0}
+.quest-level{width:48px;height:48px;flex:none;border-radius:15px;background:#fae9e3;color:#b94e3b;display:grid;place-content:center;text-align:center}
+.quest-level span{font-size:7px;font-weight:900;letter-spacing:1px}.quest-level b{font:800 17px Manrope}
+.quest-control-grid{display:grid;grid-template-columns:minmax(0,1.8fr) repeat(3,minmax(85px,.55fr));gap:9px}
+.quest-control-main{display:flex;align-items:center;gap:11px;padding:12px;background:#f8f3ea;border:1px solid #eee4d7;border-radius:12px;min-width:0}
+.quest-control-icon{width:34px;height:34px;display:grid;place-items:center;flex:none;border-radius:10px;background:#d56b56;color:#fff}
+.quest-control-copy{flex:1;min-width:0}.quest-control-copy b,.quest-control-copy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quest-control-copy b{font-size:10px;color:#263746}.quest-control-copy span{font-size:8px;color:#8a9293;margin-top:4px}
+.quest-progress-track{height:5px;background:#e8dfd3;border-radius:9px;margin-top:8px;overflow:hidden}.quest-progress-track i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#d56b56,#e6a18a)}
+.quest-go-button{display:flex;align-items:center;gap:4px;flex:none;border:0;border-radius:8px;background:#152332;color:#fff;padding:9px 10px;font-size:9px;font-weight:800}
+.quest-control-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#f8f3ea;border:1px solid #eee4d7;border-radius:12px;color:#d56b56;padding:10px 5px}
+.quest-control-stat b{font:800 15px Manrope;color:#172330}.quest-control-stat span{font-size:8px;color:#818b8d;text-align:center}
+.tutor-profile{background:linear-gradient(160deg,#f9e9df,#fff7eb);border:1px solid #f0d8cc}
+.tutor-personality-kicker{font-size:7px;letter-spacing:1.3px;font-weight:900;color:#b94e3b;background:#fff8f1;border:1px solid #f0d8cc;padding:6px 8px;border-radius:20px}
+.tutor-personality-title{font:800 11px Manrope;color:#b94e3b;margin-top:7px;text-align:center}
+.tutor-personality-style{font-size:8px!important;color:#7c8587!important;line-height:1.5;margin-top:5px}
+.tutor-profile-hana{background:linear-gradient(160deg,#e8eaf0,#fafbfc)}.tutor-profile-hana .tutor-personality-kicker,.tutor-profile-hana .tutor-personality-title{color:#536b8d}
+.tutor-profile-sofia{background:linear-gradient(160deg,#f8e4d6,#fff8ef)}.tutor-profile-sofia .tutor-personality-kicker,.tutor-profile-sofia .tutor-personality-title{color:#b85c3c}
+.tutor-profile-emily{background:linear-gradient(160deg,#e4edf4,#f9fbfd)}.tutor-profile-emily .tutor-personality-kicker,.tutor-profile-emily .tutor-personality-title{color:#4e6b8b}
+.tutor-profile-chloe{background:linear-gradient(160deg,#eee8f1,#fffafd)}.tutor-profile-chloe .tutor-personality-kicker,.tutor-profile-chloe .tutor-personality-title{color:#79566f}
+.tutor-profile-aiko{background:linear-gradient(160deg,#f8e6dc,#fff8ef)}
+.tutor-selector button.active{background:#fae9e3;border-color:#d56b56;color:#b94e3b}
+.tutor-archetype{display:inline-flex;padding:7px 10px;border-radius:20px;background:#fae9e3;color:#b94e3b;font-size:8px;font-weight:900;letter-spacing:1px}
+.character-showcase h2{color:#b94e3b}
+.landing-page{--night:#152332;--night2:#203747;--paper:#f5f1e8;--ink:#172330;--muted:#71808a;--red:#d56b56;background:#f5f1e8;color:#172330}
+.landing-hero{background:#152332}.landing-hero-photo{background:linear-gradient(90deg,#152332 0%,#152332f5 38%,#152332b0 72%,#15233266 100%),linear-gradient(0deg,#152332 0%,transparent 35%),url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2000&q=88') center/cover}
+.landing-brand>span:last-child>span{color:#e18a70}.landing-brand-mark{border-color:#d56b56;color:#f0b19b}
+.landing-cta{background:#d56b56}.landing-cta:hover{background:#b94e3b}
+.landing-hero-copy h1 em,.landing-manifesto h2 em,.landing-language-heading h2 em,.landing-tutor-grid h2 em,.landing-experience-head h2 em,.landing-final h2 em{color:#e18a70}
+.landing-kicker{color:#e8a18c}.landing-kicker>span{background:#d56b56}
+.landing-section-label>span,.method-icon,.landing-tutor-note svg{color:#d56b56}
+.landing-text-link{border-color:#d56b56;color:#b94e3b}
+.landing-languages,.landing-experience{background:#152332}
+.landing-tutor-roster-card{border-color:#d9c8b8;background:linear-gradient(150deg,#f7e7db,#e4c5b2)}
+.landing-tutor-roster-card>div{background:linear-gradient(0deg,#152332f5,#203747e8)}
+.landing-tutor-roster-card>div>span{color:#f0a58d}
+.landing-tutor-roster-card>div>small strong{display:block;color:#f4b49b;font-size:8px;margin-bottom:2px}
+.tutor-aiko{background:linear-gradient(150deg,#f7e4d8,#dfb5a4)}
+.tutor-emily{background:linear-gradient(150deg,#e4edf4,#b9cad8)}
+.tutor-hana{background:linear-gradient(150deg,#e8eaf0,#bfc8d7)}
+.tutor-sofia{background:linear-gradient(150deg,#f8e2d3,#dba58d)}
+.tutor-chloe{background:linear-gradient(150deg,#eee7f0,#c8b7ca)}
+@media(max-width:760px){.quest-control-grid{grid-template-columns:1fr 1fr}.quest-control-main{grid-column:1/-1}.quest-control-head h2{font-size:15px}}
+@media(max-width:420px){.quest-control-panel{padding:13px}.quest-control-main{flex-wrap:wrap}.quest-go-button{margin-left:auto}.quest-control-copy{min-width:120px}.quest-control-stat{min-height:76px}}
