@@ -456,3 +456,5 @@ body{background:var(--bg);color:var(--ink)}
 .tutor-chloe{background:linear-gradient(150deg,#eee7f0,#c8b7ca)}
 @media(max-width:760px){.quest-control-grid{grid-template-columns:1fr 1fr}.quest-control-main{grid-column:1/-1}.quest-control-head h2{font-size:15px}}
 @media(max-width:420px){.quest-control-panel{padding:13px}.quest-control-main{flex-wrap:wrap}.quest-go-button{margin-left:auto}.quest-control-copy{min-width:120px}.quest-control-stat{min-height:76px}}
+
+.personality-heading{display:block;margin:8px 0 10px;color:#b94e3b;font:800 17px Manrope;letter-spacing:-.3px}.emily-copy .personality-heading{font-size:20px;margin:7px 0 12px}.tutor-profile-card .personality-heading{font-size:18px}
