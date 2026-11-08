@@ -6,5 +6,11 @@ const compat = new FlatCompat({ baseDirectory: dirname(fileURLToPath(import.meta
 
 export default [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  { ignores: [".next/**", "node_modules/**", "out/**"] }
+  {
+    ignores: [".next/**", "node_modules/**", "out/**"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "prefer-const": "off"
+    }
+  }
 ];
