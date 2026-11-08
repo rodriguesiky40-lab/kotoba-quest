@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import LandingHome from "@/components/landing-home";
 import {
   Activity, BookOpen, Check, ChevronDown, ChevronRight, CircleHelp, Coins, Crown, Flame,
   GraduationCap, Heart, Home, Languages, Lock, LogIn, LogOut, Menu, MessageCircle,
@@ -322,6 +323,7 @@ export default function HomePage() {
 
   return (
     <main className="app-shell">
+      {session && (
       <header className="topbar">
         <button className="mobile-menu icon-button" onClick={() => setMobilePanel(v => !v)} aria-label="Abrir menu">{mobilePanel ? <X/> : <Menu/>}</button>
         <a className="brand" href="#inicio" onClick={() => setTab("Aprender")}><span className="brand-mark">✿</span><span>KOTOBA <i>QUEST</i></span></a>
@@ -333,8 +335,9 @@ export default function HomePage() {
         </div>
         <button className="avatar-button" title={session ? "Sair da conta" : "Entrar ou criar conta"} onClick={() => session ? signOut() : setAuthOpen(true)}>{session?.user.email?.slice(0,2).toUpperCase() || <LogIn size={17}/>}</button>
       </header>
+      )}
 
-      <div className="layout">
+      {session ? <div className="layout">
         <aside className={`sidebar ${mobilePanel ? "sidebar-open" : ""}`}>
           <div className="side-label">SUA JORNADA</div>
           {navItems.map(({label, icon: Icon}) => <button key={label} className={`nav-item ${tab === label ? "active" : ""}`} onClick={() => { setTab(label); setMobilePanel(false); }}><Icon size={19}/><span>{label}</span>{label === "Conversar" && <span className="new-tag">IA</span>}</button>)}
@@ -465,7 +468,7 @@ export default function HomePage() {
         </section>
 
         <aside className="right-panel"><div className="profile-card"><div className="profile-top"><div className="profile-avatar">{session?.user.email?.slice(0,2).toUpperCase() || "🌸"}</div><div><b>{session?.user.user_metadata?.display_name || (session ? session.user.email : "Aprendiz")}</b><small>{session ? "Conta sincronizada" : "Prévia · entre para salvar"}</small></div></div><div className="profile-xp"><span>Progresso até nível {level+1}</span><b>{levelProgress}/200 XP</b></div><div className="tiny-bar"><span style={{width:`${levelProgress/2}%`}}/></div></div><div className="daily-card"><div className="card-heading"><CalendarDaysIcon/> <b>Missões diárias</b></div>{quests.length ? quests.map(q=><div className="quest-line" key={q.id}><p>{q.title}</p><div className="daily-progress"><span style={{width:`${Math.min(100,q.progress_value/q.goal_value*100)}%`}}/></div><small>{q.progress_value}/{q.goal_value} · +{q.reward_xp} XP</small></div>) : <p>Entre e complete lições para ativar suas missões.</p>}</div><div className="quote-card"><span className="quote-spark">✧</span><p>“Não é como se eu estivesse torcendo por você, tá? Mas… continue praticando!”</p><b>— Aiko</b></div><div className="streak-card"><Flame size={20}/><span><b>{stats.current_streak} dias de ofensiva</b><small>Seu recorde: {stats.longest_streak} dias</small></span><ChevronRight size={17}/></div><div className="footer-note">KOTOBA QUEST · APRENDA NO SEU RITMO</div>{session && <button className="logout-button" onClick={signOut}><LogOut size={15}/> Sair da conta</button>}</aside>
-      </div>
+      </div> : <LandingHome onStart={() => { setAuthMode("signup"); setAuthOpen(true); }} />}
 
       {authOpen && <div className="modal-backdrop" onMouseDown={(e: {target:EventTarget|null;currentTarget:EventTarget})=>{if(e.target===e.currentTarget)setAuthOpen(false);}}><div className="lesson-modal auth-modal"><div className="modal-top"><span className="chapter-tag">KOTOBA QUEST · SUA CONTA</span><button className="icon-button" onClick={()=>setAuthOpen(false)}><X/></button></div><div className="modal-aiko"><img src="/assets/aiko/aiko_portrait_transparent.webp" alt="Aiko"/></div><h2>{authMode === "login" ? "Que bom ter você de volta!" : authMode === "signup" ? "Comece sua aventura" : "Recupere sua senha"}</h2><p className="muted">{authMode === "recover" ? "Enviaremos um link seguro para seu e-mail." : "Entre para salvar seu progresso em todos os seus dispositivos."}</p>{authMode === "signup" && <label className="auth-label">Como podemos chamar você?<input value={displayName} onChange={(e: {target:{value:string}})=>setDisplayName(e.target.value)} placeholder="Seu nome" autoComplete="name"/></label>}<label className="auth-label">E-mail<input type="email" value={email} onChange={(e: {target:{value:string}})=>setEmail(e.target.value)} placeholder="voce@email.com" autoComplete="email"/></label>{authMode !== "recover" && <label className="auth-label">Senha<input type="password" value={password} onChange={(e: {target:{value:string}})=>setPassword(e.target.value)} placeholder="Mínimo de 6 caracteres" autoComplete={authMode === "login" ? "current-password" : "new-password"}/></label>}{authError && <p className="auth-error">{authError}</p>}{authMessage && <p className="auth-success">{authMessage}</p>}{!isSupabaseConfigured() && <p className="auth-error">Conexão do banco não configurada neste ambiente.</p>}<button className="primary-button full" disabled={authBusy || !email || (authMode !== "recover" && password.length<6) || !isSupabaseConfigured()} onClick={submitAuth}>{authBusy ? "Aguarde…" : authMode === "login" ? "Entrar" : authMode === "signup" ? "Criar minha conta" : "Enviar link de recuperação"}</button>{authMode === "login" && <button className="auth-switch" onClick={()=>{setAuthMode("recover");setAuthError("");setAuthMessage("");}}>Esqueci minha senha</button>}<button className="auth-switch" onClick={()=>{setAuthMode(authMode === "signup" ? "login" : "signup");setAuthError("");setAuthMessage("");}}>{authMode === "signup" ? "Já tem uma conta? Entrar" : "Ainda não tem conta? Criar conta"}</button></div></div>}
 
