@@ -29,3 +29,28 @@
 .emily-note{display:flex;flex-direction:column;gap:5px;margin-top:14px;padding:14px 16px;border:1px solid #e7eaf2;border-radius:12px;background:#f7f9fd;color:#66728a}
 .emily-note b{font-size:10px}.emily-note span{font-size:10px;line-height:1.6}
 @media(max-width:720px){.emily-showcase{grid-template-columns:1fr;gap:16px}.emily-art-panel{min-height:300px}.emily-copy{padding:0 3px}.emily-copy h2{font-size:19px}.emily-facts{grid-template-columns:1fr 1fr}}
+
+/* Official tutor art integration */
+.emily-image-panel{padding:0}
+.emily-fallback{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;text-align:center}
+.emily-fallback>span{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;font:800 72px Manrope;background:linear-gradient(145deg,#e8c6b7,#756b9b);border:4px solid #ffffff80;box-shadow:0 0 0 12px #ffffff15}
+.emily-fallback b{font:800 29px Manrope;letter-spacing:5px}.emily-fallback small{font-size:9px;letter-spacing:2px;color:#e4e9ff}
+.emily-full-art{position:absolute;z-index:2;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.emily-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.emily-gallery article{min-height:190px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#f7f8fc,#e8edf6);display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.emily-gallery article img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.emily-gallery article b,.emily-gallery article span{position:relative;z-index:1;text-shadow:0 1px 8px #fff}
+.emily-gallery article b{font-size:11px;color:#333d55}.emily-gallery article span{font-size:9px;color:#64708a;margin-top:3px}
+.tutor-profile-card{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center;padding:24px;margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:20px}
+.tutor-profile-emblem{width:150px;height:150px;border-radius:28px;display:grid;place-items:center;font-size:72px;background:linear-gradient(145deg,#f0ebfa,#fff)}
+.tutor-archetype{font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--purple)}
+.tutor-profile-card h2{font:800 22px/1.4 Manrope;margin:10px 0;color:#423b59}
+.tutor-profile-card p{font-size:12px;line-height:1.8;color:#827d8f}
+.tutor-profile-card dl{display:grid;grid-template-columns:130px 1fr;gap:8px;font-size:11px}
+.tutor-profile-card dt{font-weight:800;color:#766b8d}.tutor-profile-card dd{margin:0;color:#686174}
+.tutor-language{display:inline-flex;margin-top:10px;padding:7px 11px;border-radius:20px;background:#f2edfc;color:#6750a9;font-size:10px;font-weight:800}
+.tutor-coming-page.hana .tutor-profile-emblem{background:linear-gradient(145deg,#e9edf4,#c9d5e6)}
+.tutor-coming-page.sofia .tutor-profile-emblem{background:linear-gradient(145deg,#fae4d6,#f0b18e)}
+.tutor-coming-page.chloe .tutor-profile-emblem{background:linear-gradient(145deg,#e6e8f8,#c8cbe7)}
+@media(max-width:900px){.emily-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.tutor-profile-card{grid-template-columns:1fr;gap:14px;padding:17px}.tutor-profile-emblem{width:100%;height:110px}.tutor-profile-card dl{grid-template-columns:1fr;gap:4px}.tutor-profile-card dd{margin-bottom:7px}}
