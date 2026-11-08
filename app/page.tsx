@@ -371,11 +371,12 @@ export default function HomePage() {
             <div className="emily-note"><b>Identidade oficial definida</b><span>Emily usa cabelo loiro-mel, olhos azuis e roupas azul-marinho com detalhes prateados. As cinco artes serão usadas em áreas diferentes do aplicativo, mantendo o mesmo rosto e figurino.</span></div>
           </div>}
           {["Hana","Sofía","Chloé"].includes(tab) && (() => {
-            const profiles = {
+            const profiles = ({
               Hana: {language:"Coreano",flag:"🇰🇷",type:"KUUDERE",quote:"“Não precisa ter pressa. Vamos dominar isso, um passo de cada vez.”",description:"Hana é calma, observadora e reservada no primeiro contato. Demonstra carinho prestando atenção aos detalhes, oferecendo conselhos certeiros e elogiando discretamente cada avanço.",style:"Elegante e contemporâneo, inspirado em Seul",method:"Pronúncia cuidadosa, padrões da fala cotidiana e contexto cultural",color:"hana"},
               "Sofía": {language:"Espanhol",flag:"🇪🇸",type:"GENKI GIRL",quote:"“¡Vamos! Errar faz parte da aventura!”",description:"Sofía é espontânea, calorosa e expressiva. Usa humor, histórias e situações do cotidiano para fazer o aluno perder a vergonha e ganhar fluência.",style:"Mediterrâneo moderno, terracota e creme",method:"Conversação, expressões naturais e encenações do dia a dia",color:"sofia"},
               Chloé: {language:"Francês",flag:"🇫🇷",type:"OJOU-SAMA + DEREDERE",quote:"“Très bien! Sabia que você conseguiria.”",description:"Chloé é sofisticada, inteligente e exigente com elegância. Corrige detalhes com delicadeza e revela um lado doce quando percebe o esforço do aluno.",style:"Chic parisiense, refinado e atemporal",method:"Pronúncia, vocabulário preciso e construção de frases elegantes",color:"chloe"}
-            }[tab];
+            } as Record<string, {language:string;flag:string;type:string;quote:string;description:string;style:string;method:string;color:string}>)[tab];
+            if (!profiles) return null;
             return <div className={`page-view character-page tutor-coming-page ${profiles.color}`}>
               <div className="eyebrow">UNIVERSO KOTOBA QUEST · {profiles.language.toUpperCase()}</div>
               <h1>Conheça {tab}</h1>
