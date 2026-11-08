@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { ArrowLeft, BookOpen, Check, ChevronDown, CircleAlert, Database, Languages, LoaderCircle, Plus, RefreshCw, Save, Search, ShieldCheck, Trash2, X } from "lucide-react";
 
 type Field = { key: string; label: string; type?: "text" | "number" | "boolean" | "json"; required?: boolean; placeholder?: string; help?: string };
@@ -137,7 +138,7 @@ export default function AdminPage() {
  }
 
  if(checking)return <main className="kq-admin-shell"><div className="kq-admin-center"><LoaderCircle className="spin"/><p>Verificando credenciais administrativas…</p></div></main>;
- if(!authorized)return <main className="kq-admin-shell"><div className="kq-admin-gate"><ShieldCheck size={38}/><h1>Área restrita</h1><p>{error}</p><a href="/">Voltar ao Kotoba Quest</a></div></main>;
+ if(!authorized)return <main className="kq-admin-shell"><div className="kq-admin-gate"><ShieldCheck size={38}/><h1>Área restrita</h1><p>{error}</p><Link href="/">Voltar ao Kotoba Quest</Link></div></main>;
 
  return <main className="kq-admin-shell">
   <header className="kq-admin-header"><a className="kq-admin-back" href="/"><ArrowLeft size={17}/> Voltar à plataforma</a><div className="kq-admin-brand"><span className="kq-admin-mark">KQ</span><div><b>KOTOBA QUEST</b><small>ADMIN STUDIO</small></div></div><div className="kq-admin-user"><ShieldCheck size={16}/> {adminName}</div></header>
