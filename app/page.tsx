@@ -212,7 +212,7 @@ export default function HomePage() {
   const navItems = [
     { label: "Aprender", icon: Home }, { label: "Histórias", icon: BookOpen },
     { label: "Conversar", icon: MessageCircle }, { label: "Ranking", icon: Trophy },
-    { label: "Aiko", icon: Sparkles }, { label: "Emily", icon: Sparkles }, { label: "Premium", icon: Crown },
+    { label: "Aiko", icon: Sparkles }, { label: "Emily", icon: Sparkles }, { label: "Hana", icon: Sparkles }, { label: "Sofía", icon: Sparkles }, { label: "Chloé", icon: Sparkles }, { label: "Premium", icon: Crown },
     ...(admin ? [{ label: "Administração", icon: ShieldCheck }] : [])
   ];
 
@@ -339,32 +339,51 @@ export default function HomePage() {
           {tab === "Aiko" && <div className="page-view character-page"><div className="eyebrow">SUA GUIA DE APRENDIZAGEM</div><h1>Conheça a Aiko</h1><p className="muted">Inteligente, dedicada e um pouquinho tsundere. Ela vai acompanhar sua evolução no japonês.</p><div className="character-showcase"><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko em corpo inteiro"/><div><span className="chapter-tag">TUTORA · JAPONÊS</span><h2>“N-não é como se eu estivesse torcendo por você… mas continue!”</h2><p>Aiko explica expressões, ajuda com pronúncia e orienta suas primeiras conversas. Cada lição foi pensada para construir uma base útil e progressiva.</p><div className="expression-strip"><img src="/assets/aiko/aiko_expressions_sheet.webp" alt="Expressões da Aiko"/></div><button className="primary-button" onClick={()=>setTab("Conversar")}>Conversar com Aiko <MessageCircle size={15}/></button></div></div></div>}
 
           {tab === "Emily" && <div className="page-view character-page emily-page">
-            <div className="eyebrow">NOVA TUTORA · INGLÊS</div>
+            <div className="eyebrow">SUA GUIA DE APRENDIZAGEM · INGLÊS</div>
             <h1>Conheça a Emily</h1>
-            <p className="muted">Sua futura parceira para destravar o inglês com conversas naturais, confiança e muita prática.</p>
+            <p className="muted">Uma parceira de conversação que transforma o inglês em uma aventura leve, confiante e natural.</p>
             <div className="emily-showcase">
-              <div className="emily-art-panel" role="img" aria-label="Identidade visual conceitual da Emily, tutora de inglês">
+              <div className="emily-art-panel emily-image-panel">
                 <span className="emily-orbit orbit-one">✦</span><span className="emily-orbit orbit-two">✧</span>
-                <div className="emily-initial">E</div>
-                <div className="emily-art-name">EMILY</div>
-                <div className="emily-art-role">ENGLISH TUTOR · 🇬🇧</div>
+                <div className="emily-fallback"><span>E</span><b>EMILY</b><small>ENGLISH TUTOR · 🇬🇧</small></div>
+                <img className="emily-full-art" src="/assets/tutors/emily/emily-full.webp" alt="Emily, tutora de inglês do Kotoba Quest" onError={(e)=>{e.currentTarget.style.display="none";}}/>
               </div>
               <div className="emily-copy">
-                <span className="emily-label">PERSONAGEM EM DESENVOLVIMENTO</span>
-                <h2>“Let’s learn together. You’ve got this!”</h2>
-                <p>Emily é divertida, comunicativa e espontânea. Ela acredita que aprender um idioma deve parecer uma conversa com alguém que torce por você — sem medo de errar.</p>
+                <span className="emily-label">GENKI GIRL · ONEE-SAN</span>
+                <h2>“Come on! You’re doing better than you think.”</h2>
+                <p>Emily é extrovertida, confiante e brincalhona. Tem energia de amiga experiente: incentiva sem pressionar, brinca com os pequenos erros e ajuda o aluno a falar sem medo.</p>
                 <div className="emily-facts">
-                  <div><span>Personalidade</span><b>Confiante, acolhedora e bem-humorada</b></div>
-                  <div><span>Estilo</span><b>Moderno, urbano e inspirado em Londres</b></div>
-                  <div><span>Gosta de</span><b>Música, viagens, filmes e novas culturas</b></div>
-                  <div><span>Método</span><b>Conversação prática, correções gentis e inglês do cotidiano</b></div>
+                  <div><span>Personalidade</span><b>Genki girl com lado onee-san: animada, protetora e acolhedora</b></div>
+                  <div><span>Estilo</span><b>Urbano e elegante, inspirado em Londres</b></div>
+                  <div><span>Gosta de</span><b>Música, viagens, cinema e conhecer culturas</b></div>
+                  <div><span>Método</span><b>Conversação cotidiana, humor leve e correções gentis</b></div>
                 </div>
-                <div className="emily-tags"><span>🇬🇧 Inglês</span><span>💬 Conversação</span><span>✨ Aprendizagem personalizada</span></div>
-                <button className="primary-button" onClick={()=>setToast("A trilha de inglês e a conversa com Emily serão liberadas quando o curso estiver pronto.")}>Em breve · Aprender com Emily</button>
+                <div className="emily-tags"><span>🇬🇧 Inglês britânico</span><span>💬 Conversação</span><span>✨ Confiança ao falar</span></div>
+                <button className="primary-button" onClick={()=>setToast("O perfil da Emily está pronto. O curso de inglês e a conversa com IA serão ativados em uma próxima etapa.")}>Perfil da tutora</button>
               </div>
             </div>
-            <div className="emily-note"><b>Próxima etapa</b><span>Finalizar a arte oficial da Emily, suas expressões e voz; depois desenvolver a trilha de inglês e conectar a tutora à IA sem alterar a experiência da Aiko.</span></div>
+            <div className="emily-gallery">
+              <article><img src="/assets/tutors/emily/emily-portrait.webp" alt="Retrato da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Retrato oficial</b><span>Perfil e seleção de tutora</span></article>
+              <article><img src="/assets/tutors/emily/emily-expressions.webp" alt="Expressões da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Expressões</b><span>Reações para futuras conversas</span></article>
+              <article><img src="/assets/tutors/emily/emily-classroom.webp" alt="Emily em sua sala de aula" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Sala de aula</b><span>Seu cenário de aprendizagem</span></article>
+              <article><img src="/assets/tutors/emily/emily-celebrating.webp" alt="Emily comemorando uma conquista" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Comemoração</b><span>Reações às conquistas do aluno</span></article>
+            </div>
+            <div className="emily-note"><b>Identidade oficial definida</b><span>Emily usa cabelo loiro-mel, olhos azuis e roupas azul-marinho com detalhes prateados. As cinco artes serão usadas em áreas diferentes do aplicativo, mantendo o mesmo rosto e figurino.</span></div>
           </div>}
+          {["Hana","Sofía","Chloé"].includes(tab) && (() => {
+            const profiles = {
+              Hana: {language:"Coreano",flag:"🇰🇷",type:"KUUDERE",quote:"“Não precisa ter pressa. Vamos dominar isso, um passo de cada vez.”",description:"Hana é calma, observadora e reservada no primeiro contato. Demonstra carinho prestando atenção aos detalhes, oferecendo conselhos certeiros e elogiando discretamente cada avanço.",style:"Elegante e contemporâneo, inspirado em Seul",method:"Pronúncia cuidadosa, padrões da fala cotidiana e contexto cultural",color:"hana"},
+              "Sofía": {language:"Espanhol",flag:"🇪🇸",type:"GENKI GIRL",quote:"“¡Vamos! Errar faz parte da aventura!”",description:"Sofía é espontânea, calorosa e expressiva. Usa humor, histórias e situações do cotidiano para fazer o aluno perder a vergonha e ganhar fluência.",style:"Mediterrâneo moderno, terracota e creme",method:"Conversação, expressões naturais e encenações do dia a dia",color:"sofia"},
+              Chloé: {language:"Francês",flag:"🇫🇷",type:"OJOU-SAMA + DEREDERE",quote:"“Très bien! Sabia que você conseguiria.”",description:"Chloé é sofisticada, inteligente e exigente com elegância. Corrige detalhes com delicadeza e revela um lado doce quando percebe o esforço do aluno.",style:"Chic parisiense, refinado e atemporal",method:"Pronúncia, vocabulário preciso e construção de frases elegantes",color:"chloe"}
+            }[tab];
+            return <div className={`page-view character-page tutor-coming-page ${profiles.color}`}>
+              <div className="eyebrow">UNIVERSO KOTOBA QUEST · {profiles.language.toUpperCase()}</div>
+              <h1>Conheça {tab}</h1>
+              <p className="muted">Sua futura companheira para descobrir o idioma e a cultura.</p>
+              <div className="tutor-profile-card"><div className="tutor-profile-emblem">{profiles.flag}</div><div><span className="tutor-archetype">{profiles.type}</span><h2>{profiles.quote}</h2><p>{profiles.description}</p><dl><dt>Estilo</dt><dd>{profiles.style}</dd><dt>Método de ensino</dt><dd>{profiles.method}</dd></dl><span className="tutor-language">{profiles.flag} {profiles.language}</span></div></div>
+              <div className="emily-note"><b>Próxima personagem em produção</b><span>O perfil e a personalidade já estão definidos. A arte oficial, as expressões, a voz e o curso serão adicionados nas próximas etapas.</span></div>
+            </div>;
+          })()}
 
           {tab === "Premium" && <div className="page-view"><div className="eyebrow">KOTOBA PLUS</div><h1>Mais caminhos para aprender</h1><p className="muted">Escolha a experiência que combina com seu ritmo. A cobrança ainda não está ativada.</p><div className="plans-grid"><article><span className="plan-label">COMECE AGORA</span><h2>Gratuito</h2><strong>R$ 0 <small>/ sempre</small></strong><ul><li>Trilha de japonês inicial</li><li>Exercícios e progresso</li><li>Histórias selecionadas</li><li>5 corações</li></ul><span className="plan-current">Plano inicial</span></article><article className="featured-plan"><span className="plan-label">PARA IR MAIS LONGE</span><h2>Premium</h2><strong>R$ 14,90 <small>/ mês</small></strong><ul><li>Vidas ilimitadas</li><li>Revisão inteligente</li><li>Mais histórias e desafios</li><li>Estatísticas detalhadas</li></ul><button className="primary-button" onClick={()=>setToast("A cobrança será ativada após configurar um provedor de pagamento.")}>Em breve</button></article><article><span className="plan-label">EXPERIÊNCIA COMPLETA</span><h2>Premium Plus</h2><strong>R$ 24,90 <small>/ mês</small></strong><ul><li>Benefícios Premium</li><li>Prática avançada com tutores IA</li><li>Pronúncia e feedback ampliados</li><li>Conteúdo exclusivo</li></ul><button className="secondary-button" onClick={()=>setToast("A cobrança será ativada após configurar um provedor de pagamento.")}>Em breve</button></article></div><p className="integration-note">Os preços são os valores planejados na etapa de concepção. Nenhum pagamento será processado até integrar e testar um provedor, configurar webhooks e publicar os termos comerciais.</p></div>}
 
