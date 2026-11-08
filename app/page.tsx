@@ -481,5 +481,6 @@ export default function HomePage() {
   );
 }
 
-function ArrowRightIcon() { return <ChevronRight size={15}/>; }\nfunction UsersIcon() { return <GraduationCap/>; }
+function ArrowRightIcon() { return <ChevronRight size={15}/>; }
+function UsersIcon() { return <GraduationCap/>; }
 function CalendarDaysIcon() { return <Target size={17}/>; }
