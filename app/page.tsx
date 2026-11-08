@@ -87,6 +87,13 @@ export default function HomePage() {
   const [chatBusy, setChatBusy] = useState(false);
   const [chatUnavailable, setChatUnavailable] = useState(false);
   const [activeTutor, setActiveTutor] = useState("aiko");
+  const [adminLessonTitle, setAdminLessonTitle] = useState("");
+  const [adminQuestionPrompt, setAdminQuestionPrompt] = useState("");
+  const [adminQuestionAnswer, setAdminQuestionAnswer] = useState("");
+  const [adminQuestionOptions, setAdminQuestionOptions] = useState("Opção A, Opção B, Opção C");
+  const [adminQuestionExplanation, setAdminQuestionExplanation] = useState("");
+  const [adminUnitId, setAdminUnitId] = useState("");
+  const [adminSaving, setAdminSaving] = useState(false);
   const [mobilePanel, setMobilePanel] = useState(false);
 
   const saveSession = useCallback((next: Session | null) => {
@@ -238,6 +245,28 @@ export default function HomePage() {
       setAnswers(prev => [...prev.filter(a => a.question_id !== question.id), { question_id: question.id, answer: answer.trim() }]);
     } catch (error) { setToast(formatError(error)); }
     finally { setChecking(false); }
+  }
+
+  async function createAdminLesson() {
+    if (!session || session.user.app_metadata?.role !== "admin") { setToast("Apenas administradores podem criar aulas."); return; }
+    const unitId = adminUnitId || units[0]?.id;
+    const options = adminQuestionOptions.split(",").map(v=>v.trim()).filter(Boolean);
+    if (!unitId || !adminLessonTitle.trim() || !adminQuestionPrompt.trim() || !adminQuestionAnswer.trim() || options.length < 2 || !options.includes(adminQuestionAnswer.trim())) {
+      setToast("Preencha o título, a pergunta, a resposta correta e ao menos duas opções. A resposta deve estar nas opções."); return;
+    }
+    setAdminSaving(true);
+    try {
+      const existing = await api(`lessons?select=id&unit_id=eq.${unitId}`) as {id:string}[];
+      const created = await api("lessons?select=id", { method:"POST", headers:{ Prefer:"return=representation" }, body:JSON.stringify({ unit_id:unitId, title:adminLessonTitle.trim(), description:adminQuestionPrompt.trim(), lesson_type:"vocabulary", xp_reward:15, sort_order:existing.length+1, is_published:false }) }) as {id:string}[];
+      const lessonId = created?.[0]?.id;
+      if (!lessonId) throw new Error("Não foi possível criar a aula.");
+      await api("lesson_questions", { method:"POST", body:JSON.stringify({ lesson_id:lessonId, prompt:adminQuestionPrompt.trim(), prompt_translation:null, question_type:"multiple_choice", options, answer_key:adminQuestionAnswer.trim(), explanation:adminQuestionExplanation.trim(), sort_order:1 }) });
+      await api(`lessons?id=eq.${lessonId}`, { method:"PATCH", body:JSON.stringify({ is_published:true }) });
+      setToast("Aula criada e publicada com a primeira questão!");
+      setAdminLessonTitle(""); setAdminQuestionPrompt(""); setAdminQuestionAnswer(""); setAdminQuestionExplanation("");
+      await loadCourse();
+    } catch(error) { setToast(formatError(error)); }
+    finally { setAdminSaving(false); }
   }
 
   async function nextQuestion() {
