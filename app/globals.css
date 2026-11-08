@@ -207,3 +207,24 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
 .tutor-selector button small{font-size:10px;color:var(--muted,#777)}
 .tutor-selector button.active{border-color:#9273c9;background:#f0eafb;box-shadow:0 5px 14px rgba(100,72,150,.12)}
 @media(max-width:600px){.tutor-selector{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.tutor-selector button{min-width:0;padding:9px 10px}}
+
+
+.learner-profile-hero{display:flex;align-items:center;gap:18px;padding:22px;border-radius:20px;background:linear-gradient(125deg,#29213d,#554078);color:#fff;margin:22px 0}
+.learner-avatar{display:grid;place-items:center;width:68px;height:68px;border-radius:22px;background:linear-gradient(145deg,#e6d7ff,#bca4e8);color:#392b53;font-size:27px;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.learner-profile-hero h2{margin:4px 0;font-size:23px}
+.learner-profile-hero p{margin:0;color:rgba(255,255,255,.72);font-size:12px}
+.profile-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.profile-stat-grid article{display:flex;flex-direction:column;gap:5px;padding:17px;border:1px solid var(--line,#e8e3ef);border-radius:15px;background:rgba(255,255,255,.7)}
+.profile-stat-grid svg{width:18px;color:#8a6ab9}
+.profile-stat-grid b{font-size:22px}
+.profile-stat-grid span{font-size:11px;color:var(--muted,#777)}
+.profile-progress-track{height:11px;border-radius:99px;overflow:hidden;background:#eee9f4}
+.profile-progress-track span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#9472c8,#c2a7e8)}
+.achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.achievement-grid article{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line,#e8e3ef);border-radius:14px;opacity:.58;background:rgba(255,255,255,.6)}
+.achievement-grid article.unlocked{opacity:1;border-color:#ddc98d;background:#fffaf0}
+.achievement-grid article>span{font-size:24px}
+.achievement-grid article b{font-size:12px}
+.achievement-grid article small{font-size:10px;line-height:1.4;color:var(--muted,#777)}
+.achievement-grid article em{font-size:9px;font-style:normal;font-weight:800;text-transform:uppercase;color:#7c61a5}
+@media(max-width:700px){.profile-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.learner-profile-hero{padding:16px}}
