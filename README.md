@@ -29,6 +29,17 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 - Áudio: pronúncia usa Web Speech API do navegador; não substitui reconhecimento fonético profissional nem TTS de estúdio.
 - Imagens das tutoras Hana e Sofía: os caminhos PNG estão preparados, mas os arquivos precisam ser enviados para `public/assets/tutors/hana/hana-full.png` e `public/assets/tutors/sofia/sofia-full.png`. A arte de Chloé permanece pendente.
 
+
+### Trilhas multilíngues adicionadas
+- Inglês: 2 unidades, 6 lições e 24 questões iniciais.
+- Espanhol: 2 unidades, 6 lições e 24 questões iniciais.
+- Francês: 2 unidades, 6 lições e 24 questões iniciais.
+- Coreano: 2 unidades, 6 lições e 24 questões iniciais.
+- O seletor da área de aprendizagem alterna entre japonês, inglês, coreano, espanhol e francês; a seleção fica salva no dispositivo.
+- A pronúncia usa a voz do navegador conforme o idioma selecionado.
+- Aiko continua como tutora de japonês. Emily, Hana e Sofía estão cadastradas; Chloé permanece não publicada enquanto a arte/personagem é finalizada.
+- As novas trilhas são um primeiro módulo de nível iniciante, não um currículo completo de fluência. É necessário ampliar a sequência de níveis, exercícios variados, escuta e histórias próprias para cada idioma.
+
 ## Supabase
 - Projeto: `kotoba-quest`
 - Região: São Paulo (`sa-east-1`)
