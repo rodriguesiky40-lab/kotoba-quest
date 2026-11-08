@@ -1,6 +1,6 @@
 # Kotoba Quest
 
-Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko, trilha progressiva, exercícios, histórias interativas, gamificação e PWA instalável.
+Plataforma de aprendizagem de idiomas com cinco trilhas iniciais, cinco tutoras visuais, exercícios, histórias interativas, gamificação e PWA instalável.
 
 ## Estado desta entrega
 
@@ -19,15 +19,15 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 - Painel administrativo ampliado com indicadores reais, inventário de unidades e formulário para criar e publicar uma aula inicial com questão de múltipla escolha.
 - Políticas RLS e grants de gerenciamento de conteúdo limitados a usuários autenticados cujo app_metadata.role seja admin; a coluna answer_key continua sem SELECT para alunos.
 - PWA, manifesto, service worker e assets originais otimizados da Aiko, mapa, cenários e recompensas.
-- Página de planos com preços planejados, sem processar pagamentos ainda.
+- Página de planos informativa; benefícios extras em preparação, sem checkout, assinaturas ou cobranças.
 - Painel administrativo visível apenas quando `app_metadata.role` for `admin`.
 
 ### Integrações que ainda exigem credenciais/configuração
 - Conversação generativa: configurar `OPENAI_API_KEY` no ambiente do Vercel. Sem a chave, a área informa que a integração está pendente.
-- Pagamentos: integrar um provedor, configurar webhooks, regras de assinatura, termos e testes antes de cobrar usuários.
+- Pagamentos: fora do escopo desta etapa, conforme decisão do projeto. Nenhum checkout, assinatura ou cobrança está ativo.
 - Administração: atribuir o papel `admin` em `app_metadata` ao usuário autorizado pelo painel do Supabase Auth. Nunca use `user_metadata` para autorização. O editor atual cria aulas com uma primeira questão; gerenciamento completo de todos os tipos de conteúdo ainda precisa ser ampliado.
 - Áudio: pronúncia usa Web Speech API do navegador; não substitui reconhecimento fonético profissional nem TTS de estúdio.
-- Imagens das tutoras Hana e Sofía: os caminhos PNG estão preparados, mas os arquivos precisam ser enviados para `public/assets/tutors/hana/hana-full.png` e `public/assets/tutors/sofia/sofia-full.png`. A arte de Chloé permanece pendente.
+- Artes oficiais das cinco tutoras integradas a partir dos arquivos já presentes no repositório: Aiko, Emily, Hana, Sofía e Chloé. Chloé permanece reservada e não publicada como tutora ativa.
 
 
 ### Trilhas multilíngues adicionadas
@@ -37,7 +37,7 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 - Coreano: 2 unidades, 6 lições e 24 questões iniciais.
 - O seletor da área de aprendizagem alterna entre japonês, inglês, coreano, espanhol e francês; a seleção fica salva no dispositivo.
 - A pronúncia usa a voz do navegador conforme o idioma selecionado.
-- Aiko continua como tutora de japonês. Emily, Hana e Sofía estão cadastradas; Chloé permanece não publicada enquanto a arte/personagem é finalizada.
+- Aiko, Emily, Hana e Sofía têm artes e perfis visuais integrados. Chloé também tem arte e perfil visual prontos, mas continua não publicada como tutora ativa.
 - As novas trilhas são um primeiro módulo de nível iniciante, não um currículo completo de fluência. É necessário ampliar a sequência de níveis, exercícios variados, escuta e histórias próprias para cada idioma.
 
 ## Supabase
