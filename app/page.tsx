@@ -212,7 +212,7 @@ export default function HomePage() {
   const navItems = [
     { label: "Aprender", icon: Home }, { label: "Histórias", icon: BookOpen },
     { label: "Conversar", icon: MessageCircle }, { label: "Ranking", icon: Trophy },
-    { label: "Aiko", icon: Sparkles }, { label: "Premium", icon: Crown },
+    { label: "Aiko", icon: Sparkles }, { label: "Emily", icon: Sparkles }, { label: "Premium", icon: Crown },
     ...(admin ? [{ label: "Administração", icon: ShieldCheck }] : [])
   ];
 
@@ -337,6 +337,34 @@ export default function HomePage() {
           {tab === "Ranking" && <div className="page-view"><div className="eyebrow">APRENDA JUNTO COM A COMUNIDADE</div><h1>Liga Kotoba</h1><p className="muted">O ranking é calculado com o XP registrado no banco, não com pontuação de demonstração.</p><div className="leaderboard-card"><div className="leaderboard-title"><Trophy/><div><b>Classificação geral</b><small>Top 20 aprendizes</small></div></div>{!session ? <div className="empty-state">Entre na sua conta para consultar a liga.</div> : leaderboard.length ? leaderboard.map((entry,i)=><div className={`leader-row ${entry.display_name === (session.user.user_metadata?.display_name || session.user.email?.split("@")[0]) ? "self" : ""}`} key={`${entry.rank_position}-${entry.display_name}`}><span className={`rank-number rank-${i+1}`}>{entry.rank_position}</span><span className="leader-avatar">{entry.display_name.slice(0,1).toUpperCase()}</span><div><b>{entry.display_name}</b><small>{entry.current_streak} dias de ofensiva</small></div><strong>{entry.total_xp.toLocaleString("pt-BR")} XP</strong></div>) : <div className="empty-state">Ainda não há participantes suficientes. Seja um dos primeiros a entrar na liga!</div>}</div></div>}
 
           {tab === "Aiko" && <div className="page-view character-page"><div className="eyebrow">SUA GUIA DE APRENDIZAGEM</div><h1>Conheça a Aiko</h1><p className="muted">Inteligente, dedicada e um pouquinho tsundere. Ela vai acompanhar sua evolução no japonês.</p><div className="character-showcase"><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko em corpo inteiro"/><div><span className="chapter-tag">TUTORA · JAPONÊS</span><h2>“N-não é como se eu estivesse torcendo por você… mas continue!”</h2><p>Aiko explica expressões, ajuda com pronúncia e orienta suas primeiras conversas. Cada lição foi pensada para construir uma base útil e progressiva.</p><div className="expression-strip"><img src="/assets/aiko/aiko_expressions_sheet.webp" alt="Expressões da Aiko"/></div><button className="primary-button" onClick={()=>setTab("Conversar")}>Conversar com Aiko <MessageCircle size={15}/></button></div></div></div>}
+
+          {tab === "Emily" && <div className="page-view character-page emily-page">
+            <div className="eyebrow">NOVA TUTORA · INGLÊS</div>
+            <h1>Conheça a Emily</h1>
+            <p className="muted">Sua futura parceira para destravar o inglês com conversas naturais, confiança e muita prática.</p>
+            <div className="emily-showcase">
+              <div className="emily-art-panel" role="img" aria-label="Identidade visual conceitual da Emily, tutora de inglês">
+                <span className="emily-orbit orbit-one">✦</span><span className="emily-orbit orbit-two">✧</span>
+                <div className="emily-initial">E</div>
+                <div className="emily-art-name">EMILY</div>
+                <div className="emily-art-role">ENGLISH TUTOR · 🇬🇧</div>
+              </div>
+              <div className="emily-copy">
+                <span className="emily-label">PERSONAGEM EM DESENVOLVIMENTO</span>
+                <h2>“Let’s learn together. You’ve got this!”</h2>
+                <p>Emily é divertida, comunicativa e espontânea. Ela acredita que aprender um idioma deve parecer uma conversa com alguém que torce por você — sem medo de errar.</p>
+                <div className="emily-facts">
+                  <div><span>Personalidade</span><b>Confiante, acolhedora e bem-humorada</b></div>
+                  <div><span>Estilo</span><b>Moderno, urbano e inspirado em Londres</b></div>
+                  <div><span>Gosta de</span><b>Música, viagens, filmes e novas culturas</b></div>
+                  <div><span>Método</span><b>Conversação prática, correções gentis e inglês do cotidiano</b></div>
+                </div>
+                <div className="emily-tags"><span>🇬🇧 Inglês</span><span>💬 Conversação</span><span>✨ Aprendizagem personalizada</span></div>
+                <button className="primary-button" onClick={()=>setToast("A trilha de inglês e a conversa com Emily serão liberadas quando o curso estiver pronto.")}>Em breve · Aprender com Emily</button>
+              </div>
+            </div>
+            <div className="emily-note"><b>Próxima etapa</b><span>Finalizar a arte oficial da Emily, suas expressões e voz; depois desenvolver a trilha de inglês e conectar a tutora à IA sem alterar a experiência da Aiko.</span></div>
+          </div>}
 
           {tab === "Premium" && <div className="page-view"><div className="eyebrow">KOTOBA PLUS</div><h1>Mais caminhos para aprender</h1><p className="muted">Escolha a experiência que combina com seu ritmo. A cobrança ainda não está ativada.</p><div className="plans-grid"><article><span className="plan-label">COMECE AGORA</span><h2>Gratuito</h2><strong>R$ 0 <small>/ sempre</small></strong><ul><li>Trilha de japonês inicial</li><li>Exercícios e progresso</li><li>Histórias selecionadas</li><li>5 corações</li></ul><span className="plan-current">Plano inicial</span></article><article className="featured-plan"><span className="plan-label">PARA IR MAIS LONGE</span><h2>Premium</h2><strong>R$ 14,90 <small>/ mês</small></strong><ul><li>Vidas ilimitadas</li><li>Revisão inteligente</li><li>Mais histórias e desafios</li><li>Estatísticas detalhadas</li></ul><button className="primary-button" onClick={()=>setToast("A cobrança será ativada após configurar um provedor de pagamento.")}>Em breve</button></article><article><span className="plan-label">EXPERIÊNCIA COMPLETA</span><h2>Premium Plus</h2><strong>R$ 24,90 <small>/ mês</small></strong><ul><li>Benefícios Premium</li><li>Prática avançada com tutores IA</li><li>Pronúncia e feedback ampliados</li><li>Conteúdo exclusivo</li></ul><button className="secondary-button" onClick={()=>setToast("A cobrança será ativada após configurar um provedor de pagamento.")}>Em breve</button></article></div><p className="integration-note">Os preços são os valores planejados na etapa de concepção. Nenhum pagamento será processado até integrar e testar um provedor, configurar webhooks e publicar os termos comerciais.</p></div>}
 
