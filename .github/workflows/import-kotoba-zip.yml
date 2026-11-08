@@ -1,0 +1,47 @@
+name: Import Kotoba Quest ZIP
+
+on:
+  push:
+    paths:
+      - "*.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extract project
+        shell: bash
+        run: |
+          set -euo pipefail
+          ZIP_FILE="$(find . -maxdepth 1 -type f -name '*.zip' -print -quit)"
+          if [ -z "$ZIP_FILE" ]; then
+            echo "No project ZIP found in repository root."
+            exit 1
+          fi
+          mkdir -p /tmp/kotoba-import
+          unzip -q "$ZIP_FILE" -d /tmp/kotoba-import
+          SOURCE_DIR="/tmp/kotoba-import/kotoba-quest"
+          if [ ! -d "$SOURCE_DIR" ]; then
+            SOURCE_DIR="/tmp/kotoba-import"
+          fi
+          rsync -a --exclude='.git' "$SOURCE_DIR/" ./
+          rm -f "$ZIP_FILE"
+          rm -rf kotoba-quest
+      - name: Commit extracted project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No extracted changes to commit."
+            exit 0
+          fi
+          git commit -m "Import Kotoba Quest project files"
+          git push
