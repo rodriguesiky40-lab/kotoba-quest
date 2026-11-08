@@ -344,9 +344,28 @@ export default function HomePage() {
 
         <section className="content">
           {tab === "Aprender" && <>
-            <div className="welcome-row"><div><div className="eyebrow">SUA AVENTURA CONTINUA</div><h1>{session ? `Vamos aprender, ${session.user.user_metadata?.display_name || "aprendiz"}?` : "Vamos aprender hoje?"}</h1><p className="muted">Aiko preparou uma jornada para você.</p></div><div className="language-select"><Languages size={16}/> Japonês <ChevronDown size={14}/></div></div>
-            {!session && <div className="guest-banner"><div><b>Salve sua jornada</b><span>Crie uma conta gratuita para registrar XP, progresso e ofensivas em todos os dispositivos.</span></div><button className="primary-button" onClick={() => setAuthOpen(true)}>Criar conta grátis</button></div>}
-            <div className="hero-card"><div className="hero-copy"><span className="chapter-tag">JAPONÊS · DO ZERO</span><h2>Uma nova amizade começa com uma palavra.</h2><p>Aprenda japonês passo a passo com Aiko, histórias e desafios.</p><button className="hero-button" onClick={() => { const first = allLessons[0]; if (first) openLesson(first, false); }}>Continuar jornada <ChevronRight size={16}/></button><div className="hero-meta"><span><Zap size={14}/> {stats.total_xp} XP conquistados</span><span><BookOpen size={14}/> {completedCount} lições concluídas</span></div></div><div className="aiko-art"><div className="aiko-glow"/><img src="/assets/aiko/aiko_portrait_transparent.webp" alt="Aiko, sua tutora de japonês"/><span className="spark s1">✧</span><span className="spark s2">✦</span></div><div className="hero-caption"><b>Aiko</b><span>Sua tutora de japonês</span></div></div>
+            <div className="welcome-row"><div><div className="eyebrow">KOTOBA QUEST · APRENDER É VIVER</div><h1>{session ? `Sua próxima conquista começa aqui, ${session.user.user_metadata?.display_name || "aprendiz"}.` : "Um novo idioma. Um mundo inteiro."}</h1><p className="muted">Menos decoreba. Mais experiências que fazem sentido.</p></div><div className="language-select"><Languages size={16}/> Japonês <ChevronDown size={14}/></div></div>
+            <section className="hero-card hero-editorial">
+              <div className="hero-copy">
+                <span className="chapter-tag"><Sparkles size={12}/> SUA JORNADA COMEÇA AQUI</span>
+                <h2>Não estude apenas palavras. <em>Viva o idioma.</em></h2>
+                <p>Explore o Japão, converse com Aiko e transforme cada pequena prática em uma conquista real.</p>
+                <div className="hero-actions">
+                  <button className="hero-button" onClick={() => { const first = allLessons[0]; if (first) openLesson(first, false); else setToast("A trilha está sendo preparada. Volte em breve!"); }}>Começar a aprender <ChevronRight size={16}/></button>
+                  <button className="hero-text-button" onClick={() => setTab("Histórias")}>Explorar histórias <ArrowRightIcon/></button>
+                </div>
+                <div className="hero-meta"><span><Zap size={14}/> {stats.total_xp} XP conquistados</span><span><BookOpen size={14}/> {completedCount} lições concluídas</span><span><Flame size={14}/> {stats.current_streak} dias de sequência</span></div>
+              </div>
+              <div className="aiko-art"><div className="aiko-glow"/><div className="aiko-orbit orbit-a"/><div className="aiko-orbit orbit-b"/><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko, sua tutora de japonês"/><span className="spark s1">✧</span><span className="spark s2">✦</span></div>
+              <div className="hero-caption"><b>あいこ · Aiko</b><span>Sua companheira de jornada</span></div>
+              <div className="hero-floating-note"><span className="floating-note-icon">今日</span><div><b>Uma prática por dia</b><small>Seu progresso, no seu ritmo</small></div><span className="floating-check">✓</span></div>
+            </section>
+            {!session && <div className="guest-banner"><div><b>Guarde cada conquista.</b><span>Crie sua conta gratuita para salvar seu progresso e continuar de onde parou, em qualquer dispositivo.</span></div><button className="primary-button" onClick={() => setAuthOpen(true)}>Criar conta grátis <ChevronRight size={15}/></button></div>}
+            <section className="learning-pillars" aria-label="Como funciona o Kotoba Quest">
+              <button className="pillar-card" onClick={() => setTab("Aprender")}><span className="pillar-icon pillar-violet"><BookOpen size={19}/></span><span><b>Aprenda na prática</b><small>Lições curtas com evolução clara</small></span><ChevronRight size={16}/></button>
+              <button className="pillar-card" onClick={() => setTab("Histórias")}><span className="pillar-icon pillar-rose"><Sparkles size={19}/></span><span><b>Entre nas histórias</b><small>Use o idioma em situações reais</small></span><ChevronRight size={16}/></button>
+              <button className="pillar-card" onClick={() => setTab("Conversar")}><span className="pillar-icon pillar-mint"><MessageCircle size={19}/></span><span><b>Ganhe confiança</b><small>Pratique conversando com tutores</small></span><ChevronRight size={16}/></button>
+            </section>
             <section className="destination-section">
               <div className="section-heading"><div><div className="eyebrow">EXPLORE O JAPÃO</div><h2>Aprenda pelo mundo real</h2><p className="muted">Conheça lugares, cultura e expressões que ganham vida em cada destino.</p></div><span className="unit-pill">4 DESTINOS</span></div>
               <div className="destination-grid">
@@ -459,5 +478,5 @@ export default function HomePage() {
   );
 }
 
-function UsersIcon() { return <GraduationCap/>; }
+function ArrowRightIcon() { return <ChevronRight size={15}/>; }\nfunction UsersIcon() { return <GraduationCap/>; }
 function CalendarDaysIcon() { return <Target size={17}/>; }
