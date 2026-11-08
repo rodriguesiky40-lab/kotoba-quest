@@ -31,6 +31,9 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 - Projeto separado de Ventos da Mandinga.
 
 ## Variáveis de ambiente
+
+A chave configurada em `NEXT_PUBLIC_SUPABASE_ANON_KEY` é a chave pública `anon` legada em formato JWT, compatível com o cabeçalho `Authorization: Bearer` usado pelo cliente REST. As tabelas expostas usam RLS; nunca coloque uma chave `service_role` no frontend.
+
 Crie `.env.local` a partir de `.env.example`:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` (publishable/anon key; nunca service_role)
