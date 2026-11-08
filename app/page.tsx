@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import LandingHome from "@/components/landing-home";
 import {
@@ -119,6 +119,7 @@ export default function HomePage() {
   const [adminUnitId, setAdminUnitId] = useState("");
   const [adminSaving, setAdminSaving] = useState(false);
   const [mobilePanel, setMobilePanel] = useState(false);
+  const chatRequestId = useRef(0);
 
   const saveSession = useCallback((next: Session | null) => {
     setSession(next ? withExpiry(next) : null);
@@ -319,19 +320,29 @@ export default function HomePage() {
     window.speechSynthesis.speak(utterance);
   }
 
+  function switchTutor(tutorKey: string) {
+    chatRequestId.current += 1;
+    setActiveTutor(tutorKey);
+    setChatMessages([{ role: "assistant", content: `Olá! Sou ${tutorNames[tutorKey]}, ${tutorPersonalities[tutorKey].title.toLowerCase()}. ${tutorPersonalities[tutorKey].quote} Vamos praticar ${tutorLanguages[tutorKey].toLowerCase()}?` }]);
+    setChatInput("");
+    setChatBusy(false);
+    setChatUnavailable(false);
+  }
+
   async function sendChat() {
     const content = chatInput.trim();
     if (!content || chatBusy) return;
     if (!session) { setAuthOpen(true); setToast("Entre para conversar com a Aiko."); return; }
+    const requestId = ++chatRequestId.current;
     const next = [...chatMessages, { role: "user" as const, content }];
     setChatMessages(next); setChatInput(""); setChatBusy(true);
     try {
       const response = await fetch("/api/tutor", { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` }, body: JSON.stringify({ tutor: activeTutor, messages: next.slice(-12) }) });
       const data = await response.json();
       if (!response.ok) { if (response.status === 503) setChatUnavailable(true); throw new Error(data.error || "A tutora está indisponível."); }
-      setChatMessages(v => [...v, { role: "assistant", content: data.reply }]);
-    } catch (error) { setChatMessages(v => [...v, { role: "assistant", content: error instanceof Error ? error.message : "Não consegui responder agora." }]); }
-    finally { setChatBusy(false); }
+      if (requestId === chatRequestId.current) setChatMessages(v => [...v, { role: "assistant", content: data.reply }]);
+    } catch (error) { if (requestId === chatRequestId.current) setChatMessages(v => [...v, { role: "assistant", content: error instanceof Error ? error.message : "Não consegui responder agora." }]); }
+    finally { if (requestId === chatRequestId.current) setChatBusy(false); }
   }
 
   function startStory(index: number) { if (!session) { setAuthOpen(true); setToast("Entre para registrar suas histórias."); return; } setStoryIndex(index); setStoryStep(0); setStoryChoice(""); setStoryFeedback(""); }
@@ -434,7 +445,7 @@ export default function HomePage() {
 
           {tab === "Histórias" && <div className="page-view"><div className="eyebrow">APRENDA PELO CONTEXTO</div><h1>Histórias interativas</h1><p className="muted">Entre em pequenas aventuras, escolha respostas e aprenda expressões que fazem sentido no cotidiano.</p><div className="story-grid">{storyContent.map((story,i) => <article key={story.id}><img src={story.image} alt=""/><div><span>INICIANTE · {story.duration.toUpperCase()}</span><h2>{story.title}</h2><p>{story.subtitle}</p><button className="primary-button" onClick={() => startStory(i)}>Começar história <ChevronRight size={15}/></button></div></article>)}</div></div>}
 
-          {tab === "Conversar" && <div className="page-view tutor-page"><div className="eyebrow">PRÁTICA DE CONVERSAÇÃO</div><h1>Converse com sua tutora</h1><p className="muted">Escolha uma guia para praticar o idioma com uma personalidade e um método próprios.</p><div className="tutor-selector">{[{id:"aiko",name:"Aiko",lang:"Japonês"},{id:"emily",name:"Emily",lang:"Inglês"},{id:"hana",name:"Hana",lang:"Coreano"},{id:"sofia",name:"Sofía",lang:"Espanhol"},{id:"chloe",name:"Chloé",lang:"Francês"}].map(t=><button key={t.id} className={activeTutor===t.id?"active":""} onClick={()=>{setActiveTutor(t.id);setChatMessages([{role:"assistant",content:`Olá! Sou ${t.name}, ${tutorPersonalities[t.id].title.toLowerCase()}. ${tutorPersonalities[t.id].quote} Vamos praticar ${t.lang.toLowerCase()}?`}]);setChatUnavailable(false);}}><b>{t.name}</b><small>{tutorPersonalities[t.id].title}</small><small className="tutor-selector-language">{t.lang}</small></button>)}</div><div className="tutor-layout"><div className={`tutor-profile tutor-profile-${activeTutor}`}><span className="tutor-personality-kicker">{tutorPersonalities[activeTutor].archetype}</span><img src={tutorAssets[activeTutor]?.full || tutorAssets.aiko.full} alt={`Tutora ${tutorNames[activeTutor]}`} onError={e=>{e.currentTarget.src="/assets/aiko/aiko_portrait_transparent.webp";}}/><b>{tutorNames[activeTutor]}</b><strong className="tutor-personality-title">{tutorPersonalities[activeTutor].title}</strong><span>{tutorSubjects[activeTutor]}</span><small className="tutor-personality-style">{tutorPersonalities[activeTutor].style}</small><div className="tutor-status"><span/> {chatUnavailable ? "Conexão de IA pendente" : "Sessão de prática"}</div><div className="tutor-tip">“{tutorPersonalities[activeTutor].quote}”</div></div><div className="chat-panel"><div className="chat-head"><div><b>Sala de conversação</b><small>{tutorLanguages[activeTutor]} · iniciante</small></div><span className="live-dot">● online</span></div><div className="chat-messages">{chatMessages.map((m,i) => <div key={i} className={`chat-bubble ${m.role}`}>{m.content}</div>)}{chatBusy && <div className="chat-bubble assistant typing">{tutorNames[activeTutor]} está pensando…</div>}</div><div className="chat-suggestions">{[`Como digo “meu nome é” em ${tutorLanguages[activeTutor].toLowerCase()}?`,"Vamos simular um pedido no café.",`Corrija minha frase em ${tutorLanguages[activeTutor].toLowerCase()}.`] .map(s=><button key={s} onClick={()=>setChatInput(s)}>{s}</button>)}</div><form className="chat-compose" onSubmit={(e: { preventDefault: () => void })=>{e.preventDefault();sendChat();}}><input value={chatInput} onChange={(e: {target:{value:string}})=>setChatInput(e.target.value)} placeholder={`Escreva em português ou ${selectedLanguage.name.toLowerCase()}…`}/><button disabled={chatBusy || !chatInput.trim()} aria-label="Enviar"><Send size={18}/></button></form>{chatUnavailable && <p className="integration-note">A integração de IA precisa da variável secreta <code>OPENAI_API_KEY</code> no Vercel. A interface já está pronta; sem essa chave, a resposta generativa fica desativada.</p>}</div></div></div>}
+          {tab === "Conversar" && <div className="page-view tutor-page"><div className="eyebrow">PRÁTICA DE CONVERSAÇÃO</div><h1>Converse com sua tutora</h1><p className="muted">Escolha uma guia para praticar o idioma com uma personalidade e um método próprios.</p><div className="tutor-selector">{[{id:"aiko",name:"Aiko",lang:"Japonês"},{id:"emily",name:"Emily",lang:"Inglês"},{id:"hana",name:"Hana",lang:"Coreano"},{id:"sofia",name:"Sofía",lang:"Espanhol"},{id:"chloe",name:"Chloé",lang:"Francês"}].map(t=><button key={t.id} className={activeTutor===t.id?"active":""} onClick={()=>switchTutor(t.id)}><b>{t.name}</b><small>{tutorPersonalities[t.id].title}</small><small className="tutor-selector-language">{t.lang}</small></button>)}</div><div className="tutor-layout"><div className={`tutor-profile tutor-profile-${activeTutor}`}><span className="tutor-personality-kicker">{tutorPersonalities[activeTutor].archetype}</span><img src={tutorAssets[activeTutor]?.full || tutorAssets.aiko.full} alt={`Tutora ${tutorNames[activeTutor]}`} onError={e=>{e.currentTarget.src="/assets/aiko/aiko_portrait_transparent.webp";}}/><b>{tutorNames[activeTutor]}</b><strong className="tutor-personality-title">{tutorPersonalities[activeTutor].title}</strong><span>{tutorSubjects[activeTutor]}</span><small className="tutor-personality-style">{tutorPersonalities[activeTutor].style}</small><div className="tutor-status"><span/> {chatUnavailable ? "Conexão de IA pendente" : "Sessão de prática"}</div><div className="tutor-tip">“{tutorPersonalities[activeTutor].quote}”</div></div><div className="chat-panel"><div className="chat-head"><div><b>Sala de conversação</b><small>{tutorLanguages[activeTutor]} · iniciante</small></div><span className="live-dot">● online</span></div><div className="chat-messages">{chatMessages.map((m,i) => <div key={i} className={`chat-bubble ${m.role}`}>{m.content}</div>)}{chatBusy && <div className="chat-bubble assistant typing">{tutorNames[activeTutor]} está pensando…</div>}</div><div className="chat-suggestions">{[`Como digo “meu nome é” em ${tutorLanguages[activeTutor].toLowerCase()}?`,"Vamos simular um pedido no café.",`Corrija minha frase em ${tutorLanguages[activeTutor].toLowerCase()}.`] .map(s=><button key={s} onClick={()=>setChatInput(s)}>{s}</button>)}</div><form className="chat-compose" onSubmit={(e: { preventDefault: () => void })=>{e.preventDefault();sendChat();}}><input value={chatInput} onChange={(e: {target:{value:string}})=>setChatInput(e.target.value)} placeholder={`Escreva em português ou ${selectedLanguage.name.toLowerCase()}…`}/><button disabled={chatBusy || !chatInput.trim()} aria-label="Enviar"><Send size={18}/></button></form>{chatUnavailable && <p className="integration-note">A integração de IA precisa da variável secreta <code>OPENAI_API_KEY</code> no Vercel. A interface já está pronta; sem essa chave, a resposta generativa fica desativada.</p>}</div></div></div>}
 
           {tab === "Ranking" && <div className="page-view"><div className="eyebrow">APRENDA JUNTO COM A COMUNIDADE</div><h1>Liga Kotoba</h1><p className="muted">O ranking é calculado com o XP registrado no banco, não com pontuação de demonstração.</p><div className="leaderboard-card"><div className="leaderboard-title"><Trophy/><div><b>Classificação geral</b><small>Top 20 aprendizes</small></div></div>{!session ? <div className="empty-state">Entre na sua conta para consultar a liga.</div> : leaderboard.length ? leaderboard.map((entry,i)=><div className={`leader-row ${entry.display_name === (session.user.user_metadata?.display_name || session.user.email?.split("@")[0]) ? "self" : ""}`} key={`${entry.rank_position}-${entry.display_name}`}><span className={`rank-number rank-${i+1}`}>{entry.rank_position}</span><span className="leader-avatar">{entry.display_name.slice(0,1).toUpperCase()}</span><div><b>{entry.display_name}</b><small>{entry.current_streak} dias de ofensiva</small></div><strong>{entry.total_xp.toLocaleString("pt-BR")} XP</strong></div>) : <div className="empty-state">Ainda não há participantes suficientes. Seja um dos primeiros a entrar na liga!</div>}</div></div>}
 
