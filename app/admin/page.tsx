@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Check, ChevronDown, CircleAlert, Database, Languages, LoaderCircle, Plus, RefreshCw, Save, Search, ShieldCheck, Trash2, X } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, CircleAlert, Database, Languages, LoaderCircle, Plus, RefreshCw, Save, Search, ShieldCheck, Trash2, X } from "lucide-react";
 
 type Field = { key: string; label: string; type?: "text" | "number" | "boolean" | "json"; required?: boolean; placeholder?: string; help?: string };
 type Resource = { key: string; label: string; singular: string; description: string; fields: Field[]; order: string };
