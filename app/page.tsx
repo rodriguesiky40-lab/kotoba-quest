@@ -192,15 +192,15 @@ export default function HomePage() {
     return () => { active = false; };
   }, [refreshSession]);
 
-  useEffect(() => { const saved = typeof window !== "undefined" ? localStorage.getItem("kotoba-language") : null; if (saved && languageOptions.some(l=>l.code===saved)) { setSelectedLanguageCode(saved); setActiveTutor(languageOptions.find(l=>l.code===saved)?.tutor || "aiko"); } }, []);
+  useEffect(() => { const saved = typeof window !== "undefined" ? localStorage.getItem("kotoba-language") : null; if (saved && languageOptions.some(l=>l.code===saved)) { setSelectedLanguageCode(saved); setDataBusy(true); setActiveTutor(languageOptions.find(l=>l.code===saved)?.tutor || "aiko"); } }, []);
   useEffect(() => { loadCourse(); }, [loadCourse]);
   useEffect(() => {
     if (!session) return;
     const name = session.user.user_metadata?.display_name || session.user.email?.split("@")[0] || "Aprendiz";
-    api("profiles?on_conflict=id", { method: "POST", headers: { Prefer: "resolution=merge-duplicates,return=minimal" }, body: JSON.stringify({ id: session.user.id, display_name: name, preferred_language_code: "ja" }) })
+    api("profiles?on_conflict=id", { method: "POST", headers: { Prefer: "resolution=merge-duplicates,return=minimal" }, body: JSON.stringify({ id: session.user.id, display_name: name, preferred_language_code: selectedLanguageCode }) })
       .then(() => api("user_stats?on_conflict=user_id", { method: "POST", headers: { Prefer: "resolution=ignore-duplicates,return=minimal" }, body: JSON.stringify({ user_id: session.user.id }) }))
       .then(loadUserData).catch(error => setToast(formatError(error)));
-  }, [session, api, loadUserData]);
+  }, [session, api, loadUserData, selectedLanguageCode]);
 
   async function submitAuth() {
     setAuthBusy(true); setAuthError(""); setAuthMessage("");
@@ -233,7 +233,7 @@ export default function HomePage() {
   const levelProgress = stats.total_xp % 200;
   const admin = session?.user.app_metadata?.role === "admin";
   const navItems = [
-    { label: "Aprender", icon: Home }, { label: "Histórias", icon: BookOpen },
+    { label: "Aprender", icon: Home }, ...(selectedLanguageCode === "ja" ? [{ label: "Histórias", icon: BookOpen }] : []),
     { label: "Conversar", icon: MessageCircle }, { label: "Ranking", icon: Trophy }, { label: "Meu perfil", icon: UserRound },
     { label: "Aiko", icon: Sparkles }, { label: "Emily", icon: Sparkles }, { label: "Hana", icon: Sparkles }, { label: "Sofía", icon: Sparkles }, { label: "Chloé", icon: Sparkles }, { label: "Premium", icon: Crown },
     ...(admin ? [{ label: "Administração", icon: ShieldCheck }] : [])
@@ -365,7 +365,7 @@ export default function HomePage() {
                 <p>Explore {selectedLanguage.destination}, converse com {tutorNames[selectedLanguage.tutor]} e transforme cada pequena prática em uma conquista real.</p>
                 <div className="hero-actions">
                   <button className="hero-button" onClick={() => { const first = allLessons[0]; if (first) openLesson(first, false); else setToast("A trilha está sendo preparada. Volte em breve!"); }}>Começar a aprender <ChevronRight size={16}/></button>
-                  <button className="hero-text-button" onClick={() => setTab("Histórias")}>Explorar histórias <ArrowRightIcon/></button>
+                  {selectedLanguageCode === "ja" && <button className="hero-text-button" onClick={() => setTab("Histórias")}>Explorar histórias <ArrowRightIcon/></button>}
                 </div>
                 <div className="hero-meta"><span><Zap size={14}/> {stats.total_xp} XP conquistados</span><span><BookOpen size={14}/> {completedCount} lições concluídas</span><span><Flame size={14}/> {stats.current_streak} dias de sequência</span></div>
               </div>
@@ -376,7 +376,7 @@ export default function HomePage() {
             {!session && <div className="guest-banner"><div><b>Guarde cada conquista.</b><span>Crie sua conta gratuita para salvar seu progresso e continuar de onde parou, em qualquer dispositivo.</span></div><button className="primary-button" onClick={() => setAuthOpen(true)}>Criar conta grátis <ChevronRight size={15}/></button></div>}
             <section className="learning-pillars" aria-label="Como funciona o Kotoba Quest">
               <button className="pillar-card" onClick={() => setTab("Aprender")}><span className="pillar-icon pillar-violet"><BookOpen size={19}/></span><span><b>Aprenda na prática</b><small>Lições curtas com evolução clara</small></span><ChevronRight size={16}/></button>
-              <button className="pillar-card" onClick={() => setTab("Histórias")}><span className="pillar-icon pillar-rose"><Sparkles size={19}/></span><span><b>Entre nas histórias</b><small>Use o idioma em situações reais</small></span><ChevronRight size={16}/></button>
+              {selectedLanguageCode === "ja" && <button className="pillar-card" onClick={() => setTab("Histórias")}><span className="pillar-icon pillar-rose"><Sparkles size={19}/></span><span><b>Entre nas histórias</b><small>Use o idioma em situações reais</small></span><ChevronRight size={16}/></button>}
               <button className="pillar-card" onClick={() => setTab("Conversar")}><span className="pillar-icon pillar-mint"><MessageCircle size={19}/></span><span><b>Ganhe confiança</b><small>Pratique conversando com tutores</small></span><ChevronRight size={16}/></button>
             </section>
             {selectedLanguageCode === "ja" && <><section className="destination-section">
