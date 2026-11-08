@@ -199,3 +199,11 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
 .admin-action-grid span{font-size:11px;line-height:1.5;color:var(--muted,#777)}
 @media(max-width:1000px){.destination-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.destination-grid{gap:9px}.destination-card{min-height:175px;border-radius:14px}.destination-overlay{padding:12px}.destination-overlay b{font-size:21px}.destination-overlay em{font-size:10px}.admin-unit-row{align-items:flex-start;flex-wrap:wrap}.admin-status{margin-left:55px}.admin-action-grid{grid-template-columns:1fr}}
+
+
+.tutor-selector{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 18px}
+.tutor-selector button{display:flex;flex-direction:column;gap:3px;min-width:90px;padding:10px 14px;border:1px solid var(--line,#e8e3ef);border-radius:13px;background:rgba(255,255,255,.72);color:var(--ink,#30283c);text-align:left;cursor:pointer;transition:all .2s}
+.tutor-selector button b{font-size:13px}
+.tutor-selector button small{font-size:10px;color:var(--muted,#777)}
+.tutor-selector button.active{border-color:#9273c9;background:#f0eafb;box-shadow:0 5px 14px rgba(100,72,150,.12)}
+@media(max-width:600px){.tutor-selector{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.tutor-selector button{min-width:0;padding:9px 10px}}
