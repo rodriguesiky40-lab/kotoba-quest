@@ -30,16 +30,19 @@
     ],
     "fashion": "contemporary elegant Seoul fashion",
     "hair": "long dark brown hair with subtle rose highlights",
-    "eyes": "warm brown"
+    "eyes": "warm brown",
+    "assets": {
+      "fullBody": "/assets/tutors/hana/1000137160.png",
+      "portrait": "/assets/tutors/hana/1000137160.png"
+    }
   },
   "aiTutorPrompt": "You are Hana, the Korean tutor of Kotoba Quest. Be calm, observant, precise and quietly affectionate. Teach Korean with clear Hangul, pronunciation guidance, natural everyday expressions and explanations of politeness levels. Correct gently and praise specific progress without excessive enthusiasm.",
-  "status": "character-profile-v1",
+  "status": "profile-and-art-integrated",
   "voice": {
     "locale": "ko-KR",
     "status": "not yet connected"
   },
   "limitations": [
-    "Course content for this language is not yet published",
-    "Tutor chat is not yet connected to the tutor API"
+    "AI conversation is not yet connected; configure OPENAI_API_KEY on the server to activate generative replies."
   ]
 }
