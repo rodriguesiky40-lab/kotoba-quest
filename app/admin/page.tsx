@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, BookOpen, Check, CircleAlert, Database, Languages, LoaderCircle, Plus, RefreshCw, Save, Search, ShieldCheck, Trash2, X } from "lucide-react";
 
@@ -87,7 +87,7 @@ export default function AdminPage() {
 
  const resource=resources.find(r=>r.key===active)!;
  const currentRows=rows[active]||[];
- const filtered=useMemo(()=>currentRows.filter(row=>JSON.stringify(row).toLowerCase().includes(query.toLowerCase())),[currentRows,query]);
+ const filtered=currentRows.filter(row=>JSON.stringify(row).toLowerCase().includes(query.toLowerCase()));
 
  function startCreate(){
   const base={...(defaults[active]||{})};
@@ -141,7 +141,7 @@ export default function AdminPage() {
  if(!authorized)return <main className="kq-admin-shell"><div className="kq-admin-gate"><ShieldCheck size={38}/><h1>Área restrita</h1><p>{error}</p><Link href="/">Voltar ao Kotoba Quest</Link></div></main>;
 
  return <main className="kq-admin-shell">
-  <header className="kq-admin-header"><a className="kq-admin-back" href="/"><ArrowLeft size={17}/> Voltar à plataforma</a><div className="kq-admin-brand"><span className="kq-admin-mark">KQ</span><div><b>KOTOBA QUEST</b><small>ADMIN STUDIO</small></div></div><div className="kq-admin-user"><ShieldCheck size={16}/> {adminName}</div></header>
+  <header className="kq-admin-header"><Link className="kq-admin-back" href="/"><ArrowLeft size={17}/> Voltar à plataforma</Link><div className="kq-admin-brand"><span className="kq-admin-mark">KQ</span><div><b>KOTOBA QUEST</b><small>ADMIN STUDIO</small></div></div><div className="kq-admin-user"><ShieldCheck size={16}/> {adminName}</div></header>
   <section className="kq-admin-hero"><div><span className="kq-admin-eyebrow">CENTRAL DE CONTROLE</span><h1>Admin Studio</h1><p>Gerencie cursos, unidades, lições, questões, tutores e a gamificação em um só lugar.</p></div><div className="kq-admin-secure"><ShieldCheck size={18}/><span>Acesso validado pelo Supabase Auth<br/><small>app_metadata.role = admin</small></span></div></section>
   <div className="kq-admin-layout">
    <aside className="kq-admin-sidebar"><span className="kq-admin-side-label">GERENCIAMENTO</span>{resources.map(item=><button key={item.key} className={active===item.key?"active":""} onClick={()=>{setActive(item.key);setShowForm(false);setQuery("");setError("");}}><span>{item.label}</span><small>{rows[item.key]?.length??"—"}</small></button>)}<div className="kq-admin-side-foot"><Database size={16}/> Dados protegidos por RLS</div></aside>
