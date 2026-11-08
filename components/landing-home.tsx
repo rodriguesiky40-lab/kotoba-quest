@@ -45,7 +45,7 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
       <div className="landing-language-heading"><h2>Uma língua abre<br/><em>um novo universo.</em></h2><p>Comece por onde sua curiosidade levar. Novos caminhos estão sendo preparados.</p></div>
       <div className="landing-language-grid">
         <article className="language-feature"><div className="language-photo japan-photo"/><div className="language-meta"><span>🇯🇵 JAPÃO</span><b>日本語</b><small>Disponível para começar</small><button onClick={onStart}>Explorar japonês <ArrowRight size={14}/></button></div><div className="language-number">01</div></article>
-        <article><div className="language-flag">🇺🇸</div><div className="language-meta"><span>ESTADOS UNIDOS</span><b>English</b><small>Em expansão</small></div><div className="language-number">02</div></article>
+        <article><div className="language-flag">🇺🇸</div><div className="language-meta"><span>ESTADOS UNIDOS</span><b>English</b><small>Trilha inicial disponível</small></div><div className="language-number">02</div></article>
         <article><div className="language-flag">🇰🇷</div><div className="language-meta"><span>COREIA DO SUL</span><b>한국어</b><small>Em expansão</small></div><div className="language-number">03</div></article>
         <article><div className="language-flag">🇪🇸</div><div className="language-meta"><span>ESPANHA</span><b>Español</b><small>Em expansão</small></div><div className="language-number">04</div></article>
         <article><div className="language-flag">🇫🇷</div><div className="language-meta"><span>FRANÇA</span><b>Français</b><small>Em expansão</small></div><div className="language-number">05</div></article>
@@ -54,10 +54,17 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
 
     <section className="landing-tutors" id="tutores">
       <div className="landing-section-label"><span>03</span> APRENDER COM ALGUÉM FAZ DIFERENÇA</div>
-      <div className="landing-tutor-grid"><div><h2>Conheça quem<br/>vai caminhar<br/><em>com você.</em></h2><p>Tutores com personalidades e estilos próprios tornam cada etapa mais humana. Aiko é a primeira guia da jornada; novas personagens estão chegando.</p><button className="landing-cta dark" onClick={onStart}>Conhecer o Kotoba <ArrowRight size={16}/></button></div>
+      <div className="landing-tutor-grid"><div><h2>Conheça quem<br/>vai caminhar<br/><em>com você.</em></h2><p>Tutores com personalidades e estilos próprios tornam cada etapa mais humana. As cinco tutoras já têm identidade visual e acompanham os idiomas disponíveis no Kotoba Quest.</p><button className="landing-cta dark" onClick={onStart}>Conhecer o Kotoba <ArrowRight size={16}/></button></div>
         <div className="landing-aiko-card"><div className="aiko-card-bg"/><img src="/assets/aiko/aiko_portrait_transparent.webp" alt="Aiko, tutora de japonês"/><div className="aiko-card-info"><span>01 / TUTORA DE JAPONÊS</span><b>Aiko</b><small>Curiosa, gentil e sempre pronta para uma nova aventura.</small></div><div className="aiko-card-stamp">はじめ<br/>よう!</div></div>
       </div>
-      <div className="landing-tutor-note"><Sparkles size={16}/> Cada tutora terá uma abordagem própria, construída para aproximar idioma, cultura e conversação.</div>
+      <div className="landing-tutor-roster" aria-label="Conheça as cinco tutoras">
+        <article className="landing-tutor-roster-card tutor-aiko"><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko, tutora de japonês"/><div><span>🇯🇵 JAPONÊS</span><b>Aiko</b><small>Gentil, inteligente e um pouco tsundere</small></div></article>
+        <article className="landing-tutor-roster-card tutor-emily"><img src="/assets/tutors/emily/1000137141.png" alt="Emily, tutora de inglês"/><div><span>🇬🇧 INGLÊS</span><b>Emily</b><small>Comunicativa, divertida e espontânea</small></div></article>
+        <article className="landing-tutor-roster-card tutor-hana"><img src="/assets/tutors/hana/1000137160.png" alt="Hana, tutora de coreano"/><div><span>🇰🇷 COREANO</span><b>Hana</b><small>Calma, observadora e determinada</small></div></article>
+        <article className="landing-tutor-roster-card tutor-sofia"><img src="/assets/tutors/sofia/1000137159.png" alt="Sofía, tutora de espanhol"/><div><span>🇪🇸 ESPANHOL</span><b>Sofía</b><small>Expressiva, calorosa e acolhedora</small></div></article>
+        <article className="landing-tutor-roster-card tutor-chloe"><img src="/assets/tutors/chloe/1000137158.png" alt="Chloé, tutora de francês"/><div><span>🇫🇷 FRANCÊS</span><b>Chloé</b><small>Sofisticada, inteligente e elegante</small></div></article>
+      </div>
+      <div className="landing-tutor-note"><Sparkles size={16}/> Cada tutora tem uma personalidade própria. Chloé aparece como personagem reservada e ainda não foi publicada como tutora ativa.</div>
     </section>
 
     <section className="landing-experience" id="jornada">
