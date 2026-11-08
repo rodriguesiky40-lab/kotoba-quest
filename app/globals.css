@@ -157,3 +157,14 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
  .stat-pill{padding:7px 8px}
 }
 @media(prefers-reduced-motion:reduce){.page-view{animation:none}}
+
+
+/* Official tutor artwork — Hana and Sofia */
+.tutor-art-frame{position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:390px;max-height:520px;overflow:hidden;border-radius:20px;background:linear-gradient(155deg,#f2eff8,#e8e3f1)}
+.tutor-art-frame img{display:block;width:100%;height:100%;max-height:520px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 12px 18px rgba(35,24,55,.12))}
+.tutor-art-frame.hana-art{background:radial-gradient(ellipse at 50% 35%,#fff 0,#e8edf5 58%,#dce4ef 100%)}
+.tutor-art-frame.sofia-art{background:radial-gradient(ellipse at 50% 35%,#fff9f3 0,#f8e8dd 58%,#f0d0bc 100%)}
+.tutor-art-frame.chloe-art{min-height:180px;max-height:220px;align-items:center}
+.tutor-pending{border:1px dashed #c8bddc;background:#f7f4fb}
+.tutor-art-ready{border:1px solid #d9eadf;background:#f4faf5}
+@media(max-width:720px){.tutor-art-frame{min-height:300px;max-height:390px}.tutor-art-frame img{max-height:390px}}
