@@ -458,3 +458,20 @@ body{background:var(--bg);color:var(--ink)}
 @media(max-width:420px){.quest-control-panel{padding:13px}.quest-control-main{flex-wrap:wrap}.quest-go-button{margin-left:auto}.quest-control-copy{min-width:120px}.quest-control-stat{min-height:76px}}
 
 .personality-heading{display:block;margin:8px 0 10px;color:#b94e3b;font:800 17px Manrope;letter-spacing:-.3px}.emily-copy .personality-heading{font-size:20px;margin:7px 0 12px}.tutor-profile-card .personality-heading{font-size:18px}
+
+
+/* Learning experience polish: companion tutor, quest feedback and small-screen usability */
+.hero-caption{display:grid;gap:3px}.hero-caption strong{font:800 10px Manrope;color:#f2b09a}.hero-caption span{font-size:9px}
+.lesson-coach{display:flex;align-items:center;gap:12px;margin:2px 0 18px;padding:11px 13px;border:1px solid #ead9cf;border-radius:13px;background:linear-gradient(110deg,#fff5ed,#f7e7df)}
+.lesson-coach img{width:58px;height:58px;object-fit:contain;object-position:center bottom;flex:none}
+.lesson-coach>div{display:grid;gap:4px;min-width:0}.lesson-coach>div>span{font-size:7px;letter-spacing:1.1px;font-weight:900;color:#b94e3b}.lesson-coach>div>b{font:800 11px Manrope;color:#243543}.lesson-coach>div>small{font-size:9px;line-height:1.45;color:#7c7774}
+.lesson-coach-hana{background:linear-gradient(110deg,#f1f3f7,#e4eaf1);border-color:#d9e0e9}.lesson-coach-hana>div>span{color:#536b8d}
+.lesson-coach-emily{background:linear-gradient(110deg,#eff4f8,#e2ebf3);border-color:#d7e2ec}.lesson-coach-emily>div>span{color:#4e6b8b}
+.lesson-coach-sofia{background:linear-gradient(110deg,#fff3e9,#f8e1d4);border-color:#efd5c5}.lesson-coach-sofia>div>span{color:#b85c3c}
+.lesson-coach-chloe{background:linear-gradient(110deg,#f8f1f7,#eee5f0);border-color:#e6d9e7}.lesson-coach-chloe>div>span{color:#79566f}
+.tutor-selector button{min-width:0}.tutor-selector button small{display:block}.tutor-selector button .tutor-selector-language{font-size:7px;opacity:.72;margin-top:2px}
+.daily-progress.is-complete{background:#e0eee6}.daily-progress.is-complete span{background:#5b9c78}
+.daily-card .quest-line p{font-weight:800}.quest-line small{display:block;margin-top:5px}
+.quote-card b{font-size:9px;line-height:1.4}
+@media(max-width:760px){.lesson-coach{align-items:flex-start}.lesson-coach img{width:48px;height:52px}.lesson-coach>div>small{font-size:8px}.hero-caption{left:12px;bottom:12px}}
+@media(max-width:520px){.tutor-selector{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.tutor-selector button{padding:9px 5px}.tutor-selector button b{font-size:10px}.tutor-selector button small{font-size:7px}.quest-control-main{gap:8px}.quest-control-copy b{font-size:9px}.quest-go-button{font-size:8px;padding:8px}}
