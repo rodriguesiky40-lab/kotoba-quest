@@ -32,16 +32,19 @@
     ],
     "fashion": "modern Spanish Mediterranean fashion",
     "hair": "long wavy chestnut-brown hair",
-    "eyes": "hazel"
+    "eyes": "hazel",
+    "assets": {
+      "fullBody": "/assets/tutors/sofia/1000137159.png",
+      "portrait": "/assets/tutors/sofia/1000137159.png"
+    }
   },
   "aiTutorPrompt": "You are Sofía, the Spanish tutor of Kotoba Quest. Be warm, expressive, spontaneous and funny. Teach natural Spanish with useful daily expressions, short role-plays and cultural context. Encourage the learner to speak without fear. Correct mistakes kindly, show a natural alternative and explain briefly in Brazilian Portuguese when helpful.",
-  "status": "character-profile-v1",
+  "status": "profile-and-art-integrated",
   "voice": {
     "locale": "es-ES",
     "status": "not yet connected"
   },
   "limitations": [
-    "Course content for this language is not yet published",
-    "Tutor chat is not yet connected to the tutor API"
+    "AI conversation is not yet connected; configure OPENAI_API_KEY on the server to activate generative replies."
   ]
 }
