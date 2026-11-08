@@ -381,8 +381,8 @@ export default function HomePage() {
               <div className="eyebrow">UNIVERSO KOTOBA QUEST · {profiles.language.toUpperCase()}</div>
               <h1>Conheça {tab}</h1>
               <p className="muted">Sua futura companheira para descobrir o idioma e a cultura.</p>
-              <div className="tutor-profile-card"><div className="tutor-profile-emblem">{profiles.flag}</div><div><span className="tutor-archetype">{profiles.type}</span><h2>{profiles.quote}</h2><p>{profiles.description}</p><dl><dt>Estilo</dt><dd>{profiles.style}</dd><dt>Método de ensino</dt><dd>{profiles.method}</dd></dl><span className="tutor-language">{profiles.flag} {profiles.language}</span></div></div>
-              <div className="emily-note"><b>Próxima personagem em produção</b><span>O perfil e a personalidade já estão definidos. A arte oficial, as expressões, a voz e o curso serão adicionados nas próximas etapas.</span></div>
+              <div className="tutor-profile-card"><div className={`tutor-art-frame ${tab === "Hana" ? "hana-art" : tab === "Sofía" ? "sofia-art" : "chloe-art"}`}>{tab === "Hana" ? <img src="/assets/tutors/hana/hana-full.webp" alt="Hana, tutora de coreano" /> : tab === "Sofía" ? <img src="/assets/tutors/sofia/sofia-full.webp" alt="Sofía, tutora de espanhol" /> : <div className="tutor-profile-emblem">{profiles.flag}</div>}</div><div><span className="tutor-archetype">{profiles.type}</span><h2>{profiles.quote}</h2><p>{profiles.description}</p><dl><dt>Estilo</dt><dd>{profiles.style}</dd><dt>Método de ensino</dt><dd>{profiles.method}</dd></dl><span className="tutor-language">{profiles.flag} {profiles.language}</span></div></div>
+              <div className={`emily-note ${tab === "Chloé" ? "tutor-pending" : "tutor-art-ready"}`}><b>{tab === "Chloé" ? "Chloé · arte pendente" : "Arte oficial adicionada"}</b><span>{tab === "Chloé" ? "A personagem está reservada e seu perfil já está definido. A arte oficial será adicionada quando estiver pronta." : `A arte oficial de ${tab} já está integrada ao perfil. As expressões, a voz e o curso serão adicionados nas próximas etapas.`}</span></div>
             </div>;
           })()}
 
