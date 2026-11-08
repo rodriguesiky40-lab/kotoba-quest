@@ -13,7 +13,11 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 - Proteção das respostas: `answer_key` não pode ser lido pelas roles `anon` e `authenticated`; correção ocorre por RPC autenticada.
 - Conquistas e ranking com dados do banco.
 - Duas histórias interativas originais com cenários ilustrados.
-- Área de conversação da Aiko com endpoint server-side para OpenAI, autenticado por sessão Supabase.
+- Área de conversação com seleção entre as cinco tutoras; endpoint server-side com personalidades e idiomas separados, autenticado por sessão Supabase (requer OPENAI_API_KEY).
+- Página de perfil do aluno com XP, moedas, ofensiva, progresso do curso e conquistas.
+- Área de exploração com fotografias ilustrativas de destinos japoneses (Kyoto, Tóquio, Monte Fuji e Osaka), usando imagens Unsplash e links de referência/licença.
+- Painel administrativo ampliado com indicadores reais, inventário de unidades e formulário para criar e publicar uma aula inicial com questão de múltipla escolha.
+- Políticas RLS e grants de gerenciamento de conteúdo limitados a usuários autenticados cujo app_metadata.role seja admin; a coluna answer_key continua sem SELECT para alunos.
 - PWA, manifesto, service worker e assets originais otimizados da Aiko, mapa, cenários e recompensas.
 - Página de planos com preços planejados, sem processar pagamentos ainda.
 - Painel administrativo visível apenas quando `app_metadata.role` for `admin`.
@@ -21,8 +25,9 @@ Plataforma de aprendizagem de idiomas com foco inicial em japonês, tutora Aiko,
 ### Integrações que ainda exigem credenciais/configuração
 - Conversação generativa: configurar `OPENAI_API_KEY` no ambiente do Vercel. Sem a chave, a área informa que a integração está pendente.
 - Pagamentos: integrar um provedor, configurar webhooks, regras de assinatura, termos e testes antes de cobrar usuários.
-- Administração: atribuir o papel `admin` em `app_metadata` ao usuário autorizado pelo painel do Supabase Auth. Nunca use `user_metadata` para autorização.
+- Administração: atribuir o papel `admin` em `app_metadata` ao usuário autorizado pelo painel do Supabase Auth. Nunca use `user_metadata` para autorização. O editor atual cria aulas com uma primeira questão; gerenciamento completo de todos os tipos de conteúdo ainda precisa ser ampliado.
 - Áudio: pronúncia usa Web Speech API do navegador; não substitui reconhecimento fonético profissional nem TTS de estúdio.
+- Imagens das tutoras Hana e Sofía: os caminhos PNG estão preparados, mas os arquivos precisam ser enviados para `public/assets/tutors/hana/hana-full.png` e `public/assets/tutors/sofia/sofia-full.png`. A arte de Chloé permanece pendente.
 
 ## Supabase
 - Projeto: `kotoba-quest`
