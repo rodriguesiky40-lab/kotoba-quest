@@ -3,7 +3,7 @@
 import { ArrowRight, BookOpen, Check, ChevronDown, CirclePlay, Compass, Flame, Headphones, MessageCircle, Sparkles, Star, Target, Trophy, Zap } from "lucide-react";
 
 export default function LandingHome({ onStart }: { onStart: () => void }) {
-  return <main className="landing-page">
+  return <div className="landing-page">
     <section className="landing-hero" id="inicio">
       <div className="landing-hero-photo" />
       <div className="landing-nav-wrap">
@@ -71,5 +71,5 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
 
     <section className="landing-final"><div className="landing-final-mark">言</div><span>SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</span><h2>Qual será sua<br/><em>primeira palavra?</em></h2><p>Entre no Kotoba Quest e comece a construir uma nova forma de ver o mundo.</p><button className="landing-cta" onClick={onStart}>Começar minha jornada <ArrowRight size={17}/></button><div className="landing-final-jp">言葉は、世界への扉。</div></section>
     <footer className="landing-footer"><a className="landing-brand" href="#inicio"><span className="landing-brand-mark">言</span><span>KOTOBA<span> QUEST</span></span></a><small>Aprenda no seu ritmo. Descubra o mundo.</small><span>© 2026 KOTOBA QUEST</span></footer>
-  </main>;
+  </div>;
 }
