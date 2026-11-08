@@ -168,3 +168,34 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
 .tutor-pending{border:1px dashed #c8bddc;background:#f7f4fb}
 .tutor-art-ready{border:1px solid #d9eadf;background:#f4faf5}
 @media(max-width:720px){.tutor-art-frame{min-height:300px;max-height:390px}.tutor-art-frame img{max-height:390px}}
+
+
+/* Japan destination photography and expanded admin workspace */
+.destination-section{margin:34px 0 38px}
+.destination-section .section-heading{align-items:flex-end;margin-bottom:16px}
+.destination-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.destination-card{position:relative;display:block;min-height:220px;overflow:hidden;border-radius:18px;color:#fff;text-decoration:none;background:#29223b;isolation:isolate;box-shadow:0 12px 28px rgba(38,27,58,.12)}
+.destination-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,10,22,.02) 15%,rgba(13,10,22,.76) 100%);z-index:-0}
+.destination-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .5s ease}
+.destination-card:hover img{transform:scale(1.06)}
+.destination-overlay{position:absolute;inset:auto 0 0;padding:18px;display:flex;flex-direction:column;gap:4px}
+.destination-overlay small{font-size:10px;letter-spacing:.16em;font-weight:800;color:#e8d8ff}
+.destination-overlay b{font-family:Georgia,serif;font-size:25px;line-height:1.1}
+.destination-overlay em{font-size:12px;font-style:normal;color:rgba(255,255,255,.84)}
+.photo-credit{margin:9px 2px 0;text-align:right;font-size:10px;color:var(--muted,#888)}
+.photo-credit a{color:inherit;text-decoration:underline}
+.admin-section{margin-top:28px}
+.admin-section .section-heading{margin-bottom:14px}
+.admin-unit-list{display:flex;flex-direction:column;gap:9px}
+.admin-unit-row{display:flex;align-items:center;gap:13px;padding:14px;border:1px solid var(--line,#e8e3ef);border-radius:14px;background:rgba(255,255,255,.65)}
+.admin-unit-index{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:12px;background:#eee8fa;color:#6948a2;font-weight:800}
+.admin-unit-info{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}
+.admin-unit-info b{font-size:14px}
+.admin-unit-info span,.admin-unit-info small{font-size:11px;color:var(--muted,#777);overflow-wrap:anywhere}
+.admin-status{font-size:10px;font-weight:700;color:#477b5b;background:#edf7ef;border-radius:999px;padding:6px 9px;white-space:nowrap}
+.admin-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.admin-action-grid article{display:flex;flex-direction:column;gap:6px;padding:15px;border:1px solid var(--line,#e8e3ef);border-radius:14px;background:rgba(255,255,255,.65)}
+.admin-action-grid b{font-size:13px}
+.admin-action-grid span{font-size:11px;line-height:1.5;color:var(--muted,#777)}
+@media(max-width:1000px){.destination-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.destination-grid{gap:9px}.destination-card{min-height:175px;border-radius:14px}.destination-overlay{padding:12px}.destination-overlay b{font-size:21px}.destination-overlay em{font-size:10px}.admin-unit-row{align-items:flex-start;flex-wrap:wrap}.admin-status{margin-left:55px}.admin-action-grid{grid-template-columns:1fr}}
