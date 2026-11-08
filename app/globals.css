@@ -228,3 +228,13 @@ button:focus-visible,input:focus-visible{outline:3px solid #a58ae8}
 .achievement-grid article small{font-size:10px;line-height:1.4;color:var(--muted,#777)}
 .achievement-grid article em{font-size:9px;font-style:normal;font-weight:800;text-transform:uppercase;color:#7c61a5}
 @media(max-width:700px){.profile-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.learner-profile-hero{padding:16px}}
+
+
+.admin-create-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:18px;border:1px solid var(--line,#e8e3ef);border-radius:16px;background:rgba(255,255,255,.72)}
+.admin-create-form label{display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--ink,#30283c)}
+.admin-create-form label:nth-child(2),.admin-create-form label:nth-child(3),.admin-create-form label:nth-child(4),.admin-create-form label:nth-child(6){grid-column:1/-1}
+.admin-create-form input,.admin-create-form select,.admin-create-form textarea{width:100%;min-height:42px;padding:10px 12px;border:1px solid var(--line,#e3ddeb);border-radius:10px;background:#fff;color:var(--ink,#30283c);font:inherit;font-size:12px;outline:none}
+.admin-create-form textarea{min-height:78px;resize:vertical}
+.admin-create-form input:focus,.admin-create-form select:focus,.admin-create-form textarea:focus{border-color:#9475c7;box-shadow:0 0 0 3px rgba(148,117,199,.12)}
+.admin-create-form button{grid-column:1/-1;justify-self:start}
+@media(max-width:600px){.admin-create-form{grid-template-columns:1fr;padding:13px}.admin-create-form label{grid-column:1/-1}.admin-create-form button{width:100%}}
