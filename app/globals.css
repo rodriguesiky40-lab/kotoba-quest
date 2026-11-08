@@ -475,3 +475,44 @@ body{background:var(--bg);color:var(--ink)}
 .quote-card b{font-size:9px;line-height:1.4}
 @media(max-width:760px){.lesson-coach{align-items:flex-start}.lesson-coach img{width:48px;height:52px}.lesson-coach>div>small{font-size:8px}.hero-caption{left:12px;bottom:12px}}
 @media(max-width:520px){.tutor-selector{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.tutor-selector button{padding:9px 5px}.tutor-selector button b{font-size:10px}.tutor-selector button small{font-size:7px}.quest-control-main{gap:8px}.quest-control-copy b{font-size:9px}.quest-go-button{font-size:8px;padding:8px}}
+
+
+/* Character profile art direction — consistent framing and portrait scale */
+.character-art-frame{position:relative;min-height:470px;height:100%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border-radius:22px;background:radial-gradient(ellipse at 50% 28%,#fffaf5 0,#f5e3d8 48%,#e7c8b9 100%);isolation:isolate}
+.character-art-frame:before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;top:8%;left:11%;background:radial-gradient(circle,#fff9f2 0,#f1cdbb80 62%,transparent 70%);z-index:-1}
+.character-art-frame>img{display:block;width:100%;height:100%;max-height:570px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 16px 24px #3b28302b);transform:scale(1.08);transform-origin:center bottom}
+.character-art-aiko{min-height:490px;background:radial-gradient(ellipse at 50% 30%,#fff9f2 0,#f5dfd2 55%,#e8c6b4 100%)}
+.character-art-aiko>img{transform:scale(1.12)}
+.emily-character-art{min-height:500px;background:radial-gradient(ellipse at 50% 32%,#f4f8fc 0,#dbe7f1 46%,#9fb5cc 100%)}
+.emily-character-art .emily-full-art{width:112%;height:108%;left:-6%;top:-1%;object-fit:contain;object-position:center bottom;transform:scale(1.08);filter:drop-shadow(0 18px 25px #17283a35)}
+.emily-gallery article{background:linear-gradient(150deg,#f5f8fc,#dce6f0)}
+.emily-gallery article img{object-fit:contain;padding:9px 9px 42px;background:radial-gradient(circle at 50% 38%,#ffffff 0,#edf2f8 66%,#dce5ef 100%)}
+.emily-gallery article:first-child img{object-position:center 24%}
+.tutor-character-art{min-height:490px;max-height:590px;padding:10px 8px 0;background:radial-gradient(ellipse at 50% 30%,#fff 0,#f2edf2 54%,#e3d9e5 100%)}
+.tutor-character-art>img{width:112%;height:108%;max-height:590px;object-fit:contain;object-position:center bottom;transform:scale(1.08);transform-origin:center bottom}
+.tutor-character-art.hana-art{background:radial-gradient(ellipse at 50% 30%,#fff 0,#e9eef6 56%,#cbd6e6 100%)}
+.tutor-character-art.sofia-art{background:radial-gradient(ellipse at 50% 30%,#fffaf5 0,#f8e5d9 56%,#e9c2ae 100%)}
+.tutor-character-art.chloe-art{background:radial-gradient(ellipse at 50% 30%,#fffaff 0,#eee6f1 56%,#d9c9df 100%)}
+.tutor-character-art.chloe-art>img{transform:scale(1.12)}
+/* Refined language picker */
+.language-select{position:relative;display:flex;align-items:center;gap:11px;min-width:208px;padding:9px 13px;border:1px solid #e8d8ce;border-radius:16px;background:linear-gradient(135deg,#fffdf9 0%,#f8eee7 100%);box-shadow:0 7px 20px #5a39200d;transition:border-color .2s,box-shadow .2s,transform .2s}
+.language-select:hover{border-color:#dca18d;box-shadow:0 10px 25px #5a39201a;transform:translateY(-1px)}
+.language-select:focus-within{border-color:#d56b56;box-shadow:0 0 0 4px #d56b561c,0 10px 25px #5a39201a}
+.language-select-icon{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:12px;background:#152b3a;color:#f5b39d}
+.language-select-copy{display:grid;gap:3px;flex:1;min-width:0}
+.language-select-copy>small{font-size:7px;font-weight:900;letter-spacing:1.2px;color:#a17a6e}
+.language-select-copy select{width:100%;min-width:0;border:0;outline:0;appearance:none;background:transparent;color:#233746;font:800 12px Manrope;cursor:pointer;padding:0}
+.language-select-current{font-size:18px;line-height:1}
+.language-select-chevron{flex:none;color:#bd6b58;pointer-events:none}
+@media(max-width:720px){
+ .character-art-frame{min-height:350px;max-height:430px}
+ .character-art-aiko{min-height:380px}
+ .character-art-frame>img{max-height:430px}
+ .emily-character-art{min-height:390px}
+ .emily-character-art .emily-full-art{max-height:420px}
+ .tutor-character-art{min-height:380px;max-height:440px}
+ .tutor-character-art>img{max-height:440px}
+ .language-select{width:100%;min-width:0;max-width:290px;padding:8px 10px;gap:8px}
+ .language-select-icon{width:33px;height:33px}
+ .language-select-copy select{font-size:11px}
+}
