@@ -520,3 +520,28 @@ body{background:var(--bg);color:var(--ink)}
 /* Aiko profile image wrapper participates in the original two-column showcase */
 .character-showcase>.character-art-frame{width:100%;min-width:0;min-height:490px}
 @media(max-width:720px){.character-showcase>.character-art-frame{min-height:360px;max-height:430px}}
+
+
+/* Student dashboard language switcher — premium compact control */
+.language-select{
+  min-width:248px;gap:12px;padding:10px 14px;border:1px solid #314656;
+  border-radius:17px;background:linear-gradient(145deg,#1a3040 0%,#233e50 100%);
+  box-shadow:0 9px 24px #15233220;color:#fff;cursor:pointer;
+}
+.language-select:hover{border-color:#e69a7f;box-shadow:0 13px 28px #15233230;transform:translateY(-2px)}
+.language-select:focus-within{border-color:#edaa91;box-shadow:0 0 0 4px #d56b5630,0 12px 26px #15233225}
+.language-select-icon{width:39px;height:39px;border-radius:13px;background:linear-gradient(145deg,#d56b56,#e89b80);color:#fff;box-shadow:inset 0 1px #ffffff40}
+.language-select-copy{gap:4px}
+.language-select-copy>small{font-size:7px;letter-spacing:1.35px;color:#d8a996}
+.language-select-copy select{font-size:13px;font-weight:800;color:#fff;color-scheme:dark}
+.language-select-copy select option{background:#1a3040;color:#fff}
+.language-select-current{font-size:21px;width:30px;text-align:center;filter:drop-shadow(0 2px 3px #0003)}
+.language-select-divider{height:27px;width:1px;background:#ffffff24;flex:none}
+.language-select-chevron{color:#f0ad96;transition:transform .2s}
+.language-select:focus-within .language-select-chevron{transform:rotate(180deg)}
+@media(max-width:720px){
+ .language-select{min-width:0;max-width:100%;width:100%;padding:9px 11px}
+ .language-select-copy select{font-size:12px}
+ .language-select-icon{width:36px;height:36px}
+ .language-select-current{font-size:19px}
+}
