@@ -13,19 +13,26 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
       </div>
       <div className="landing-hero-inner">
         <div className="landing-hero-copy">
-          <div className="landing-kicker"><span/> APRENDER UM IDIOMA PODE SER UMA AVENTURA</div>
-          <h1>O mundo fica<br/>maior quando<br/><em>você entende.</em></h1>
-          <p>Mais do que memorizar palavras. Viva histórias, pratique conversas e descubra uma nova cultura — uma pequena conquista de cada vez.</p>
+          <div className="landing-kicker"><span/> CINCO IDIOMAS · CINCO TUTORAS · UMA NOVA JORNADA</div>
+          <h1>Aprenda idiomas<br/>com suas tutoras<br/><em>favoritas.</em></h1>
+          <p>Estude japonês, inglês, coreano, espanhol e francês com personagens que têm personalidade própria, aulas interativas, desafios e uma jornada que evolui com você.</p>
           <div className="landing-hero-actions"><button className="landing-cta" onClick={onStart}>Começar gratuitamente <ArrowRight size={17}/></button><a className="landing-watch" href="#jornada"><span><CirclePlay size={19}/></span> Conheça a experiência</a></div>
-          <div className="landing-proof"><div className="landing-proof-avatars"><i>あ</i><i>文</i><i>語</i></div><span>Seu ritmo. Sua jornada. Seu próximo idioma.</span></div>
+          <div className="landing-proof"><div className="landing-proof-avatars"><i>あ</i><i>文</i><i>語</i></div><span>Escolha sua tutora. Descubra seu próximo idioma.</span></div>
         </div>
         <div className="landing-hero-art">
-          <div className="landing-art-orbit orbit-one"/><div className="landing-art-orbit orbit-two"/>
-          <div className="landing-art-card"><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko, tutora de japonês"/><div className="landing-art-caption"><span className="landing-online-dot"/> SUA COMPANHEIRA DE JORNADA<strong>Aiko</strong><small>Vamos aprender japonês?</small></div></div>
+          <div className="landing-team-glow"/>
+          <div className="landing-hero-team" aria-label="As cinco tutoras do Kotoba Quest">
+            <article className="landing-hero-tutor hero-tutor-hana"><img src="/assets/tutors/hana/1000137160.png" alt="Hana, tutora de coreano"/><span>Hana</span></article>
+            <article className="landing-hero-tutor hero-tutor-emily"><img src="/assets/tutors/emily/1000137141.png" alt="Emily, tutora de inglês"/><span>Emily</span></article>
+            <article className="landing-hero-tutor hero-tutor-aiko"><img src="/assets/aiko/aiko_full_body_transparent.webp" alt="Aiko, tutora de japonês"/><span>Aiko</span></article>
+            <article className="landing-hero-tutor hero-tutor-sofia"><img src="/assets/tutors/sofia/1000137159.png" alt="Sofía, tutora de espanhol"/><span>Sofía</span></article>
+            <article className="landing-hero-tutor hero-tutor-chloe"><img src="/assets/tutors/chloe/1000137158.png" alt="Chloé, tutora de francês"/><span>Chloé</span></article>
+          </div>
+          <div className="landing-team-caption"><span><i/> CINCO PERSONALIDADES. CINCO CAMINHOS.</span><strong>Quem vai ensinar você hoje?</strong><small>Conheça sua nova companheira de estudos.</small></div>
           <div className="landing-float-card float-xp"><span className="float-icon"><Zap size={17}/></span><div><b>+20 XP</b><small>Nova conquista</small></div></div>
-          <div className="landing-float-card float-streak"><span className="float-icon flame"><Flame size={18}/></span><div><b>7 dias</b><small>Constância cria fluência</small></div></div>
+          <div className="landing-float-card float-streak"><span className="float-icon flame"><Flame size={18}/></span><div><b>5 idiomas</b><small>Uma jornada para cada cultura</small></div></div>
           <span className="landing-sparkle sparkle-a">✳</span><span className="landing-sparkle sparkle-b">✧</span>
-        </div>
+        </div>div>
       </div>
       <div className="landing-hero-bottom"><span>01 — UMA NOVA FORMA DE APRENDER</span><span>ROLE PARA DESCOBRIR <ChevronDown size={14}/></span></div>
     </section>
@@ -45,8 +52,8 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
       <div className="landing-language-heading"><h2>Uma língua abre<br/><em>um novo universo.</em></h2><p>Comece por onde sua curiosidade levar. Novos caminhos estão sendo preparados.</p></div>
       <div className="landing-language-grid">
         <article className="language-feature"><div className="language-photo japan-photo"/><div className="language-meta"><span>🇯🇵 JAPÃO</span><b>日本語</b><small>Disponível para começar</small><button onClick={onStart}>Explorar japonês <ArrowRight size={14}/></button></div><div className="language-number">01</div></article>
-        <article><div className="language-flag">🇺🇸</div><div className="language-meta"><span>ESTADOS UNIDOS</span><b>English</b><small>Trilha inicial disponível</small></div><div className="language-number">02</div></article>
-        <article><div className="language-flag">🇰🇷</div><div className="language-meta"><span>COREIA DO SUL</span><b>한국어</b><small>Em expansão</small></div><div className="language-number">03</div></article>
+        <article><div className="language-flag">🇺🇸</div><div className="language-meta"><span>ESTADOS UNIDOS</span><b>English</b><small>Aulas iniciais disponíveis</small></div><div className="language-number">02</div></article>
+        <article><div className="language-flag">🇰🇷</div><div className="language-meta"><span>COREIA DO SUL</span><b>한국어</b><small>Aulas iniciais disponíveis</small></div><div className="language-number">03</div></article>
         <article><div className="language-flag">🇪🇸</div><div className="language-meta"><span>ESPANHA</span><b>Español</b><small>Em expansão</small></div><div className="language-number">04</div></article>
         <article><div className="language-flag">🇫🇷</div><div className="language-meta"><span>FRANÇA</span><b>Français</b><small>Em expansão</small></div><div className="language-number">05</div></article>
       </div>
