@@ -638,3 +638,59 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .landing-final{background:radial-gradient(ellipse at 50% 0%,#33495a,#0b1722 62%);color:#f5eddf}.landing-final h2{color:#f4ecdf}.landing-final h2 em{color:#d8b779}.landing-final p{color:#c4bcb0}.landing-final-mark{color:#d8b779;border-color:#d8b779}
 .landing-footer{background:#09131c;color:#a9a59c;border-top:1px solid #d8b77928}.landing-footer .landing-brand{color:#f3ecdf}
 @media(prefers-reduced-motion:no-preference){.nav-item,.primary-button,.hero-button,.lesson-node,.landing-cta,.landing-art-card{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}.primary-button:hover,.hero-button:hover,.landing-cta:hover{transform:translateY(-2px)}.landing-art-card{animation:atelier-float 7s ease-in-out infinite}@keyframes atelier-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}}
+
+
+/* Landing refresh — five anime tutors lead the learning experience */
+.landing-hero{background:#111426}
+.landing-hero-photo{background:radial-gradient(ellipse at 76% 43%,#68458d66 0%,transparent 42%),linear-gradient(90deg,#111426 0%,#17182df0 42%,#19182caa 100%),url('/assets/scenarios/japanese_classroom.webp') center/cover;opacity:1}
+.landing-kicker{color:#d7b7ff}
+.landing-kicker>span{background:#b18be8}
+.landing-hero-copy h1 em{color:#d5a8ff}
+.landing-cta{background:linear-gradient(110deg,#9166dc,#c27ac2);border-radius:9px;box-shadow:0 12px 30px #7d52c54a}
+.landing-cta:hover{background:linear-gradient(110deg,#a47be9,#d18acb)}
+.landing-login{border-color:#b99be766;background:#ffffff0d;border-radius:9px}
+.landing-brand-mark{border-color:#b99be7;color:#dfcaff;border-radius:11px}
+.landing-brand>span:last-child>span{color:#c39be9}
+.landing-hero-art{min-height:510px;display:flex;align-items:center;justify-content:center}
+.landing-team-glow{position:absolute;width:460px;height:390px;border-radius:50%;background:radial-gradient(ellipse,#a77ae866 0%,#71529b35 44%,transparent 72%);filter:blur(20px)}
+.landing-hero-team{position:relative;z-index:2;width:100%;height:425px;display:flex;align-items:flex-end;justify-content:center;gap:0;padding:0 6px 74px}
+.landing-hero-tutor{position:relative;flex:1;min-width:0;height:335px;display:flex;align-items:flex-end;justify-content:center;overflow:visible}
+.landing-hero-tutor img{height:100%;width:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 13px 17px #08081680);transition:transform .3s}
+.landing-hero-tutor:hover img{transform:translateY(-10px) scale(1.05)}
+.landing-hero-tutor span{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font:600 10px Manrope;color:#f4eaff;background:#302543;border:1px solid #c19ae655;border-radius:30px;padding:5px 11px;white-space:nowrap}
+.hero-tutor-aiko{height:415px;flex:1.25;z-index:3}
+.hero-tutor-aiko span{background:#7652a5}
+.hero-tutor-emily,.hero-tutor-sofia{height:350px}
+.hero-tutor-hana,.hero-tutor-chloe{height:315px}
+.landing-team-caption{position:absolute;z-index:4;left:50%;bottom:8px;transform:translateX(-50%);width:min(390px,90%);padding:13px 17px;background:#17182ddd;border:1px solid #d6b6f044;backdrop-filter:blur(14px);display:grid;gap:5px;text-align:center;border-radius:12px}
+.landing-team-caption>span{font-size:7px;letter-spacing:1.5px;color:#d2aef5}
+.landing-team-caption>span i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#81d8b1;margin-right:6px}
+.landing-team-caption strong{font:500 19px Georgia;color:#fff}
+.landing-team-caption small{font-size:8px;color:#b8b4c8}
+.landing-float-card{border-radius:10px;background:#f6f0ff}
+.landing-float-card.float-xp{left:-1%;top:20%}
+.landing-float-card.float-streak{right:-2%;bottom:23%}
+.landing-art-orbit{display:none}
+.landing-sparkle{color:#d9b6ff}
+.landing-manifesto{background:#fbf9ff}
+.landing-manifesto h2 em,.landing-tutor-grid h2 em{color:#986bcf}
+.landing-method-cards article{border-color:#e7dfef}
+.method-icon{color:#9369d0}
+.landing-text-link{border-color:#a77bd9;color:#8055bb}
+.landing-languages,.landing-experience{background:#17182c}
+.landing-language-heading h2 em,.landing-experience-head h2 em{color:#c79be9}
+.landing-language-grid article{background:#24243c;border-color:#ffffff18;border-radius:12px}
+.landing-language-grid article.language-feature{border-radius:12px}
+.language-photo{background:linear-gradient(0deg,#17182c 0%,#17182c5c 65%,#17182c20),url('/assets/scenarios/kyoto_traditional_street.webp') center/cover}
+.landing-tutor-roster-card{border-radius:13px}
+.landing-tutor-roster-card>div{background:linear-gradient(0deg,#211a35f5,#211a35d9)}
+.landing-tutor-roster-card>div>span{color:#d2aff5}
+.landing-experience-grid article{border-radius:12px}
+.experience-image{background:linear-gradient(0deg,#101426 0%,#10142630 75%),url('/assets/scenarios/kyoto_traditional_street.webp') center/cover}
+.landing-final{background:#eee5f7}
+.landing-final-mark{border-color:#a77bd9;color:#8655c5;border-radius:13px}
+.landing-final h2 em{color:#8655c5}
+.landing-final .landing-cta{background:linear-gradient(110deg,#9166dc,#c27ac2)}
+.landing-footer .landing-brand>span:last-child>span{color:#c39be9}
+@media(max-width:900px){.landing-hero-art{min-height:430px}.landing-hero-team{height:360px;padding-bottom:67px}.landing-hero-tutor{height:280px}.hero-tutor-aiko{height:350px}.hero-tutor-emily,.hero-tutor-sofia{height:295px}.hero-tutor-hana,.hero-tutor-chloe{height:260px}}
+@media(max-width:650px){.landing-hero-art{min-height:365px;margin:0 -5px}.landing-hero-team{height:315px;padding:0 0 65px}.landing-hero-tutor{height:225px}.hero-tutor-aiko{height:285px;flex:1.2}.hero-tutor-emily,.hero-tutor-sofia{height:240px}.hero-tutor-hana,.hero-tutor-chloe{height:210px}.landing-hero-tutor span{font-size:8px;padding:4px 8px;bottom:-23px}.landing-team-caption{bottom:0;padding:10px 12px}.landing-team-caption strong{font-size:16px}.landing-float-card.float-xp{left:-1%;top:12%}.landing-float-card.float-streak{right:-1%;bottom:17%}.landing-team-glow{width:320px;height:290px}.landing-hero-bottom{letter-spacing:1px}}
