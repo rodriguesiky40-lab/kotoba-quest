@@ -213,7 +213,6 @@ export default function HomePage() {
     if (!session) return;
     const name = session.user.user_metadata?.display_name || session.user.email?.split("@")[0] || "Aprendiz";
     api("profiles?on_conflict=id", { method: "POST", headers: { Prefer: "resolution=merge-duplicates,return=minimal" }, body: JSON.stringify({ id: session.user.id, display_name: name, preferred_language_code: selectedLanguageCode }) })
-      .then(() => api("user_stats?on_conflict=user_id", { method: "POST", headers: { Prefer: "resolution=ignore-duplicates,return=minimal" }, body: JSON.stringify({ user_id: session.user.id }) }))
       .then(loadUserData).catch(error => setToast(formatError(error)));
   }, [session, api, loadUserData, selectedLanguageCode]);
 
