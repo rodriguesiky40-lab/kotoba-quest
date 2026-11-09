@@ -469,7 +469,7 @@ export default function HomePage() {
               <div className="emily-art-panel emily-image-panel emily-character-art">
                 <span className="emily-orbit orbit-one">✦</span><span className="emily-orbit orbit-two">✧</span>
                 <div className="emily-fallback"><span>E</span><b>EMILY</b><small>ENGLISH TUTOR · 🇬🇧</small></div>
-                <img className="emily-full-art" src="/assets/tutors/emily/1000137141.png" alt="Emily, tutora de inglês do Kotoba Quest" onError={(e)=>{e.currentTarget.style.display="none";}}/>
+                <img className="emily-full-art" src={tutorAssets.emily.full} alt="Emily, tutora de inglês do Kotoba Quest" onError={(e)=>{e.currentTarget.style.display="none";}}/>
               </div>
               <div className="emily-copy">
                 <span className="emily-label">GENKI GIRL · ONEE-SAN</span><h3 className="personality-heading">A aventureira energética</h3>
@@ -486,10 +486,10 @@ export default function HomePage() {
               </div>
             </div>
             <div className="emily-gallery">
-              <article><img src="/assets/tutors/emily/1000137142.png" alt="Retrato da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Retrato oficial</b><span>Perfil e seleção de tutora</span></article>
-              <article><img src="/assets/tutors/emily/1000137144.png" alt="Expressões da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Expressões</b><span>Reações para futuras conversas</span></article>
-              <article><img src="/assets/tutors/emily/Duck-ai-image-2026-11-08-02-35.jpeg" alt="Emily em sua sala de aula" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Sala de aula</b><span>Seu cenário de aprendizagem</span></article>
-              <article><img src="/assets/tutors/emily/1000137144.png" alt="Emily comemorando uma conquista" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Comemoração</b><span>Reações às conquistas do aluno</span></article>
+              <article><img src={tutorAssets.emily.portrait} alt="Retrato da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Retrato oficial</b><span>Perfil e seleção de tutora</span></article>
+              <article><img src={tutorAssets.emily.expressions} alt="Expressões da Emily" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Expressões</b><span>Reações para futuras conversas</span></article>
+              <article><img src={tutorAssets.emily.scene} alt="Emily em sua sala de aula" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Sala de aula</b><span>Seu cenário de aprendizagem</span></article>
+              <article><img src={tutorAssets.emily.expressions} alt="Emily comemorando uma conquista" onError={(e)=>{e.currentTarget.style.display="none";}}/><b>Comemoração</b><span>Reações às conquistas do aluno</span></article>
             </div>
             <div className="emily-note"><b>Identidade oficial definida</b><span>Emily usa cabelo loiro-mel, olhos azuis e roupas azul-marinho com detalhes prateados. As cinco artes serão usadas em áreas diferentes do aplicativo, mantendo o mesmo rosto e figurino.</span></div>
           </div>}
@@ -504,8 +504,8 @@ export default function HomePage() {
               <div className="eyebrow">UNIVERSO KOTOBA QUEST · {profiles.language.toUpperCase()}</div>
               <h1>Conheça {tab}</h1>
               <p className="muted">Sua tutora para descobrir o idioma e a cultura.</p>
-              <div className="tutor-profile-card"><div className={`tutor-art-frame tutor-character-art ${tab === "Hana" ? "hana-art" : tab === "Sofía" ? "sofia-art" : "chloe-art"}`}>{tab === "Hana" ? <img src="/assets/tutors/hana/1000137160.png" alt="Hana, tutora de coreano" /> : tab === "Sofía" ? <img src="/assets/tutors/sofia/1000137159.png" alt="Sofía, tutora de espanhol" /> : <img src={tutorAssets[tab === "Hana" ? "hana" : tab === "Sofía" ? "sofia" : "chloe"].full} alt={`${tab}, tutora de ${profiles.language}`} />}</div><div><span className="tutor-archetype">{profiles.type}</span><h3 className="personality-heading">{profiles.title}</h3><h2>{profiles.quote}</h2><p>{profiles.description}</p><dl><dt>Estilo</dt><dd>{profiles.style}</dd><dt>Método de ensino</dt><dd>{profiles.method}</dd></dl><span className="tutor-language">{profiles.flag} {profiles.language}</span></div></div>
-              <div className={`emily-note ${tab === "Chloé" ? "tutor-pending" : "tutor-art-ready"}`}><b>{tab === "Chloé" ? "Chloé · perfil visual preparado" : "Arte oficial adicionada"}</b><span>{tab === "Chloé" ? "A arte oficial já está integrada. A personagem permanece reservada e não foi publicada como tutora ativa." : `A arte oficial de ${tab} já está integrada ao perfil. O curso inicial já está publicado. Voz e conversa generativa serão conectadas em uma próxima etapa.`}</span></div>
+              <div className="tutor-profile-card"><div className={`tutor-art-frame tutor-character-art ${tab === "Hana" ? "hana-art" : tab === "Sofía" ? "sofia-art" : "chloe-art"}`}>{tab === "Hana" ? <img src={tutorAssets.hana.portrait} alt="Hana, tutora de coreano" /> : tab === "Sofía" ? <img src={tutorAssets.sofia.portrait} alt="Sofía, tutora de espanhol" /> : <img src={tutorAssets[tab === "Hana" ? "hana" : tab === "Sofía" ? "sofia" : "chloe"].full} alt={`${tab}, tutora de ${profiles.language}`} />}</div><div><span className="tutor-archetype">{profiles.type}</span><h3 className="personality-heading">{profiles.title}</h3><h2>{profiles.quote}</h2><p>{profiles.description}</p><dl><dt>Estilo</dt><dd>{profiles.style}</dd><dt>Método de ensino</dt><dd>{profiles.method}</dd></dl><span className="tutor-language">{profiles.flag} {profiles.language}</span></div></div>
+              <div className={`emily-note ${tab === "Chloé" ? "tutor-pending" : "tutor-art-ready"}`}><b>{tab === "Chloé" ? "Chloé · perfil visual disponível" : "Arte oficial adicionada"}</b><span>{tab === "Chloé" ? "O retrato está disponível no perfil. Chloé permanece reservada e não foi publicada como tutora ativa." : `A arte oficial de ${tab} já está integrada ao perfil. O curso inicial já está publicado. Voz e conversa generativa serão conectadas em uma próxima etapa.`}</span></div>
             </div>;
           })()}
 
