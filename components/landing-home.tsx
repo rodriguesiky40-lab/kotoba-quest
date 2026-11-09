@@ -64,7 +64,7 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
         <article className="landing-tutor-roster-card tutor-sofia"><img src="/assets/tutors/sofia/1000137159.png" alt="Sofía, tutora de espanhol"/><div><span>🇪🇸 ESPANHOL</span><b>Sofía</b><small><strong>A chama espontânea</strong> · Genki girl: intensa e aventureira</small></div></article>
         <article className="landing-tutor-roster-card tutor-chloe"><img src="/assets/tutors/chloe/1000137158.png" alt="Chloé, tutora de francês"/><div><span>🇫🇷 FRANCÊS</span><b>Chloé</b><small><strong>A perfeccionista elegante</strong> · Ojou-sama: refinada e doce</small></div></article>
       </div>
-      <div className="landing-tutor-note"><Sparkles size={16}/> Cada tutora tem uma personalidade própria. Chloé aparece como personagem reservada e ainda não foi publicada como tutora ativa.</div>
+      <div className="landing-tutor-note"><Sparkles size={16}/> Cada tutora tem uma personalidade própria. Escolha a companhia que combina com seu jeito de aprender e pratique no seu ritmo.</div>
     </section>
 
     <section className="landing-experience" id="jornada">
