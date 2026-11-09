@@ -32,7 +32,7 @@ export default function LandingHome({ onStart }: { onStart: () => void }) {
           <div className="landing-float-card float-xp"><span className="float-icon"><Zap size={17}/></span><div><b>+20 XP</b><small>Nova conquista</small></div></div>
           <div className="landing-float-card float-streak"><span className="float-icon flame"><Flame size={18}/></span><div><b>5 idiomas</b><small>Uma jornada para cada cultura</small></div></div>
           <span className="landing-sparkle sparkle-a">✳</span><span className="landing-sparkle sparkle-b">✧</span>
-        </div>div>
+        </div>
       </div>
       <div className="landing-hero-bottom"><span>01 — UMA NOVA FORMA DE APRENDER</span><span>ROLE PARA DESCOBRIR <ChevronDown size={14}/></span></div>
     </section>
