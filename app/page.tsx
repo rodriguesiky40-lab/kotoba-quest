@@ -336,7 +336,7 @@ export default function HomePage() {
     const next = [...chatMessages, { role: "user" as const, content }];
     setChatMessages(next); setChatInput(""); setChatBusy(true);
     try {
-      const response = await fetch("/api/tutor", { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` }, body: JSON.stringify({ tutor: activeTutor, messages: next.slice(-12) }) });
+      const response = await fetch("/api/tutor", { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` }, body: JSON.stringify({ tutor: activeTutor, messages: next.slice(-12), learner: { level, totalXp: stats.total_xp, currentStreak: stats.current_streak, completedLessons: completedCount } }) });
       const data = await response.json();
       if (!response.ok) { if (response.status === 503) setChatUnavailable(true); throw new Error(data.error || "A tutora está indisponível."); }
       if (requestId === chatRequestId.current) setChatMessages(v => [...v, { role: "assistant", content: data.reply }]);
