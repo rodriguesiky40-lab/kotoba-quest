@@ -553,3 +553,9 @@ body{background:var(--bg);color:var(--ink)}
 .reward-emoji{width:39px;height:39px;display:grid;place-items:center;flex:none;border-radius:12px;background:#fae9e3;font-size:23px;line-height:1}
 .reward-emoji-item>span:last-child{font:800 10px Manrope;color:#344653}
 @media(max-width:520px){.reward-items>div.reward-emoji-item{min-height:58px;padding:8px;gap:7px}.reward-emoji{width:33px;height:33px;font-size:20px}.reward-emoji-item>span:last-child{font-size:9px}}
+
+/* Reliable language picker: native select covers the full visible control */
+.language-select{position:relative;isolation:isolate;cursor:pointer}
+.language-select-native{position:absolute;inset:0;z-index:5;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;appearance:auto;-webkit-appearance:menulist;}
+.language-select-value{display:block;color:#fff;font:800 13px Manrope;line-height:1.25;pointer-events:none}
+.language-select-icon,.language-select-copy,.language-select-current,.language-select-divider,.language-select-chevron{pointer-events:none}
