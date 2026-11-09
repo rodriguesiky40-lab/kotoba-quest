@@ -23,7 +23,13 @@ export async function POST(request: NextRequest) {
   const tutor = tutors[tutorKey] || tutors.aiko;
   const messages = Array.isArray(body?.messages) ? body.messages.slice(-12) : [];
   if (!messages.length || messages[messages.length - 1]?.role !== "user" || messages.some((m: any) => !["user", "assistant"].includes(m?.role) || typeof m?.content !== "string" || m.content.length > 1200)) return NextResponse.json({ error: "Envie uma mensagem válida para a tutora." }, { status: 400 });
-  const systemPrompt = `${tutor.prompt} Fale em português brasileiro quando explicar. O idioma-alvo é ${tutor.language}. Adapte o conteúdo ao nível informado, não invente regras nem traduções. Faça perguntas curtas para estimular a prática e mantenha respostas objetivas.`;
+  const learner = body?.learner && typeof body.learner === "object" ? body.learner : {};
+  const learnerLevel = Number.isFinite(Number(learner.level)) ? Math.max(1, Math.min(100, Math.floor(Number(learner.level)))) : 1;
+  const learnerXp = Number.isFinite(Number(learner.totalXp)) ? Math.max(0, Math.min(1000000, Math.floor(Number(learner.totalXp)))) : 0;
+  const learnerStreak = Number.isFinite(Number(learner.currentStreak)) ? Math.max(0, Math.min(3650, Math.floor(Number(learner.currentStreak)))) : 0;
+  const completedLessons = Number.isFinite(Number(learner.completedLessons)) ? Math.max(0, Math.min(10000, Math.floor(Number(learner.completedLessons)))) : 0;
+  const learnerContext = `Contexto de aprendizagem: nível ${learnerLevel}, ${learnerXp} XP acumulados, ${completedLessons} lições concluídas e sequência atual de ${learnerStreak} dias. Ajuste a dificuldade a esse progresso; não trate esses dados como prova de domínio.`;
+  const systemPrompt = `${tutor.prompt} ${learnerContext} Fale em português brasileiro quando explicar. O idioma-alvo é ${tutor.language}. Adapte o conteúdo ao nível do aluno, não invente regras nem traduções. Faça perguntas curtas para estimular a prática e mantenha respostas objetivas.`;
   const completion = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST", headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({ model: "gpt-4.1-mini", temperature: 0.65, max_tokens: 500, messages: [{ role: "system", content: systemPrompt }, ...messages] }), cache: "no-store"
