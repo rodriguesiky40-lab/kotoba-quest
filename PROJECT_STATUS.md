@@ -1,31 +1,47 @@
-# Kotoba Quest — status da entrega
+# Kotoba Quest — status real do projeto
 
-## Entregue no código e no Supabase
-- Interface responsiva com a identidade Kotoba Quest e Aiko.
-- Imagens da Aiko com fundo quadriculado removido nas versões transparentes usadas pela interface.
-- PWA com manifesto e service worker.
-- Fluxos de cadastro, login, recuperação de senha, logout e renovação de sessão.
-- Trilha de japonês com 5 unidades, 25 lições e 125 exercícios.
-- Correção segura no servidor, conclusão de lições e registro de tentativas.
-- XP, moedas, corações, recuperação de coração a cada quatro horas, ofensiva, missões diárias e conquistas.
-- Ranking com dados públicos limitados ao nome de exibição e pontuação.
+## Publicação e infraestrutura
+- Site de produção: https://kotoba-quest-app.vercel.app
+- Painel administrativo: https://kotoba-quest-app.vercel.app/admin
+- Repositório: https://github.com/rodriguesiky40-lab/kotoba-quest
+- Stack: Next.js 15, React 19, TypeScript, Supabase e Vercel.
+- Último deploy verificado: READY, produção, commit 1da33b71 (10/11/2026).
+- O build remoto de produção concluiu com sucesso. Há avisos CSS do Autoprefixer e aviso de dependências SWC ausentes no lockfile; o CSS de alinhamento está sendo normalizado neste commit.
+
+## Funcionalidades existentes no código
+- Landing page editorial com cinco tutoras ilustradas: Aiko, Emily, Hana, Sofía e Chloé.
+- Interface responsiva e PWA.
+- Cadastro, login, recuperação de senha, logout e renovação de sessão.
+- Cursos de japonês, inglês, coreano, espanhol e francês.
+- Japonês: 5 unidades, 25 lições e 125 exercícios.
+- Cursos iniciais nos outros idiomas, com conteúdo introdutório.
+- Correção de exercícios no servidor, conclusão de lições e registro de tentativas.
+- XP, moedas, corações, recuperação de corações, ofensiva, missões diárias e conquistas.
+- Ranking com dados públicos limitados.
 - Histórias interativas e pronúncia por síntese de voz do navegador.
-- Endpoint server-side para tutora generativa, com validação de sessão.
-- Migração SQL versionada para o motor de lições e conteúdo adicional.
+- Endpoint de tutora generativa com validação de sessão e contexto de progresso.
+- Studio administrativo para gerenciar conteúdo.
+- Migrações SQL versionadas; verificações anteriores registraram 23 políticas RLS em 15 tabelas e proteção das respostas corretas.
 
-## Bloqueios externos para uma operação comercial completa
-1. **Publicação do novo código no Vercel:** o projeto foi preparado como Next.js em Node 22, e a proteção SSO foi desativada para permitir acesso público. Porém, o deploy atual ainda é a versão estática antiga. O projeto não está conectado a um repositório Kotoba Quest acessível pelo GitHub conectado, e a ferramenta disponível nesta sessão não permite criar um repositório novo; por isso o novo código foi preparado, mas ainda não foi publicado.
-2. **Tutora IA generativa:** falta configurar `OPENAI_API_KEY` como variável secreta no Vercel. O endpoint já está implementado e não expõe a chave ao navegador.
-3. **Assinaturas:** falta escolher e conectar um provedor de pagamento, configurar webhooks e validar regras de assinatura. A tela de planos não cobra ninguém.
-4. **Administrador:** atribuir `app_metadata.role = "admin"` ao usuário autorizado no Supabase Auth. A interface não permite que um usuário se promova.
-5. **QA de autenticação:** ainda não há usuários cadastrados no projeto para executar um teste ponta a ponta de cadastro, sessão e progresso real.
+## Pendências reais
+1. **Chave da tutora IA:** a variável `OPENAI_API_KEY` existe no ambiente Production da Vercel, mas está sem valor. O endpoint está implementado, porém a IA generativa só funcionará depois que o proprietário inserir uma chave válida diretamente na Vercel. Nenhum segredo deve ser compartilhado no chat.
+2. **Cenário novo do Runway:** a imagem panorâmica foi gerada, mas ainda não está incorporada aos arquivos permanentes do repositório. O link temporário de origem não será usado no site. Há cenários estáticos já incluídos no projeto como alternativa visual.
+3. **Animação em vídeo:** o workspace Runway conectado está no plano gratuito e não oferece modelos de vídeo. Não foi feito upgrade nem compra.
+4. **QA ponta a ponta:** ainda é necessário testar com uma conta real os fluxos de cadastro, login, lição, progresso e experiência mobile. O build READY não substitui esses testes.
+5. **Pagamentos:** deliberadamente adiados; nenhuma cobrança está ativa.
 
-## Verificações realizadas
-- TypeScript/TSX passou pela verificação estática local com stubs de tipos, em modo strict e sem variáveis/parâmetros não usados.
-- Referências de assets verificadas; nenhuma referência encontrada sem arquivo correspondente.
-- Banco: 25 lições, 125 exercícios, 20 exercícios de digitação.
-- Banco: 23 políticas RLS em 15 tabelas preservadas.
-- Banco: funções de correção e conclusão testadas quanto à resposta correta/incorreta.
-- Banco: respostas (`answer_key`) não podem ser lidas por `anon` ou `authenticated` diretamente.
-- Supabase Security Advisor: sem alertas após mover as funções SECURITY DEFINER para o schema privado e expor wrappers SECURITY INVOKER.
-- **Build de produção Next.js não executado:** o ambiente local não conseguiu acessar `registry.npmjs.org` para instalar dependências. A compilação final precisa ser confirmada pelo build remoto do Vercel.
+## Verificações anteriores registradas
+- TypeScript/TSX passou por verificação estática local em modo strict.
+- Referências de assets verificadas em uma revisão anterior.
+- Banco: 25 lições, 125 exercícios e 20 exercícios de digitação.
+- Funções de correção e conclusão testadas com respostas certas e erradas.
+- Respostas `answer_key` não devem ser acessíveis diretamente por usuários comuns.
+- Security Advisor do Supabase sem alertas na revisão anterior.
+- O build de produção mais recente foi executado pela Vercel e terminou em READY.
+
+## Próxima sequência recomendada
+1. Finalizar a limpeza dos avisos CSS e do lockfile, sem alterar o banco.
+2. Executar testes de interface e de rotas públicas/autenticadas.
+3. Configurar a chave da IA diretamente na Vercel pelo proprietário.
+4. Integrar um arquivo de cenário permanente quando o arquivo binário estiver disponível.
+5. Retomar animação somente quando houver acesso a um modelo de vídeo.
