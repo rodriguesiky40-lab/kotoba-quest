@@ -642,7 +642,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 
 /* Landing refresh — five anime tutors lead the learning experience */
 .landing-hero{background:#111426}
-.landing-hero-photo{background:radial-gradient(ellipse at 76% 43%,#68458d66 0%,transparent 42%),linear-gradient(90deg,#111426 0%,#17182df0 42%,#19182caa 100%),url('/assets/scenarios/japanese_classroom.webp') center/cover;opacity:1}
+.landing-hero-photo{background:radial-gradient(ellipse at 76% 43%,#68458d66 0%,transparent 42%),linear-gradient(90deg,#111426 0%,#17182df0 42%,#19182caa 100%),url('/assets/scenarios/kyoto_traditional_street.webp') center/cover;opacity:1;transform:scale(1.025);animation:kotoba-scene-drift 28s ease-in-out infinite alternate}
+.landing-hero-photo:after{content:"";position:absolute;inset:-8%;pointer-events:none;opacity:.25;background-image:radial-gradient(4px 3px at 12% 18%,#f5d8ff 42%,transparent 75%),radial-gradient(3px 4px at 38% 62%,#f5d8ff 42%,transparent 75%),radial-gradient(3px 3px at 77% 28%,#f5d8ff 42%,transparent 75%);background-size:260px 230px,330px 290px,410px 350px;animation:kotoba-petals-drift 22s linear infinite}
+@keyframes kotoba-scene-drift{0%{transform:scale(1.025);background-position:50% 50%}100%{transform:scale(1.09);background-position:54% 46%}}
+@keyframes kotoba-petals-drift{0%{transform:translate3d(-1%, -2%,0)}100%{transform:translate3d(2%, 3%,0)}}
+@media(prefers-reduced-motion:reduce){.landing-hero-photo,.landing-hero-photo:after{animation:none}}
 .landing-kicker{color:#d7b7ff}
 .landing-kicker>span{background:#b18be8}
 .landing-hero-copy h1 em{color:#d5a8ff}
