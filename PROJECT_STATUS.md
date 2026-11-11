@@ -45,3 +45,28 @@
 3. Configurar a chave da IA diretamente na Vercel pelo proprietário.
 4. Integrar um arquivo de cenário permanente quando o arquivo binário estiver disponível.
 5. Retomar animação somente quando houver acesso a um modelo de vídeo.
+
+
+## Integração das mecânicas do protótipo Google AI Studio — 11/11/2026
+
+O ZIP recebido foi auditado. O protótipo usa Vite + React + Express e estado demonstrativo em localStorage; não deve substituir a aplicação Next.js/Supabase existente. O arquivo ZIP do projeto original estava incluído dentro do ZIP recebido, confirmando a separação entre o protótipo e o produto de produção.
+
+### Integrado ao projeto principal
+- Nova área **Jornada RPG** no menu autenticado.
+- Mapa de progressão por unidades e lições reais do idioma selecionado.
+- Estados de etapa concluída, disponível e bloqueada derivados de `user_progress`.
+- Indicadores de nível, XP, moedas, sequência de estudos e conclusão calculados com dados de `user_stats` e `user_progress`.
+- Missões diárias e conquistas carregadas das tabelas existentes.
+- Botões de etapas disponíveis abrem o fluxo de lição existente, mantendo correção e recompensa pelo backend Supabase.
+- Visual adaptado ao idioma selecionado; o mapa japonês não é reutilizado como cenário dos outros idiomas.
+
+### Preparação de banco (migration ainda não aplicada)
+Foi adicionada `supabase/migrations/202611110001_rpg_player_systems.sql` com tabelas próprias do jogador para perfil RPG, inventário, cartões de repetição espaçada e caderno de erros. As políticas RLS restringem leitura e escrita aos dados do próprio usuário; inventário é somente leitura no cliente e perfil RPG não aceita alterações diretas até que existam RPCs de progressão seguras.
+
+**Importante:** a migration foi versionada no GitHub, mas não foi aplicada ao Supabase de produção. A Jornada RPG usa somente tabelas existentes e não depende dela. Revisão espaçada, inventário e perfil customizável ainda não estão ativos.
+
+### Validação
+- O primeiro build da integração detectou incompatibilidade de tipos entre o modelo de lição do app e o componente RPG; o contrato foi corrigido no commit seguinte.
+- Deploy Vercel do commit `77acd297` chegou a READY.
+- Commits posteriores adicionaram adaptação visual por idioma e restrição de permissões na migration; seus deploys estavam em fila/construção na última verificação.
+- Ainda falta QA visual e ponta a ponta autenticado. Não declarar a nova experiência como totalmente validada até o deploy mais recente ficar READY e a navegação ser testada.
