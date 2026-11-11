@@ -62,9 +62,9 @@ alter table public.user_inventory enable row level security;
 alter table public.user_srs_cards enable row level security;
 alter table public.user_mistakes enable row level security;
 
-drop policy if exists "players manage own game profile" on public.user_game_profiles;
-create policy "players manage own game profile" on public.user_game_profiles
-  for all to authenticated using ((select auth.uid())=user_id) with check ((select auth.uid())=user_id);
+drop policy if exists "players read own game profile" on public.user_game_profiles;
+create policy "players read own game profile" on public.user_game_profiles
+  for select to authenticated using ((select auth.uid())=user_id);
 
 drop policy if exists "players read own inventory" on public.user_inventory;
 create policy "players read own inventory" on public.user_inventory
@@ -93,7 +93,7 @@ drop policy if exists "players update own mistakes" on public.user_mistakes;
 create policy "players update own mistakes" on public.user_mistakes
   for update to authenticated using ((select auth.uid())=user_id) with check ((select auth.uid())=user_id);
 
-grant select, insert, update, delete on public.user_game_profiles to authenticated;
+grant select on public.user_game_profiles to authenticated;
 grant select on public.user_inventory to authenticated;
 grant select, insert, update, delete on public.user_srs_cards to authenticated;
 grant select, insert, update on public.user_mistakes to authenticated;
