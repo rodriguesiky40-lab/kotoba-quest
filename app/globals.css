@@ -698,3 +698,61 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .landing-footer .landing-brand>span:last-child>span{color:#c39be9}
 @media(max-width:900px){.landing-hero-art{min-height:430px}.landing-hero-team{height:360px;padding-bottom:67px}.landing-hero-tutor{height:280px}.hero-tutor-aiko{height:350px}.hero-tutor-emily,.hero-tutor-sofia{height:295px}.hero-tutor-hana,.hero-tutor-chloe{height:260px}}
 @media(max-width:650px){.landing-hero-art{min-height:365px;margin:0 -5px}.landing-hero-team{height:315px;padding:0 0 65px}.landing-hero-tutor{height:225px}.hero-tutor-aiko{height:285px;flex:1.2}.hero-tutor-emily,.hero-tutor-sofia{height:240px}.hero-tutor-hana,.hero-tutor-chloe{height:210px}.landing-hero-tutor span{font-size:8px;padding:4px 8px;bottom:-23px}.landing-team-caption{bottom:0;padding:10px 12px}.landing-team-caption strong{font-size:16px}.landing-float-card.float-xp{left:-1%;top:12%}.landing-float-card.float-streak{right:-1%;bottom:17%}.landing-team-glow{width:320px;height:290px}.landing-hero-bottom{letter-spacing:1px}}
+
+
+/* Kotoba Quest RPG journey — integrated with the authenticated learning data */
+.rpg-journey{display:grid;gap:20px;padding-bottom:28px}
+.rpg-world-hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:250px;overflow:hidden;border-radius:24px;background:linear-gradient(120deg,#21183c,#4e367f 62%,#8b5e91);color:#fff;box-shadow:0 18px 48px #30204c25}
+.rpg-world-copy{padding:30px;align-self:center;position:relative;z-index:1}
+.rpg-kicker{display:inline-flex;align-items:center;gap:7px;color:#e6d8ff;font-size:9px;font-weight:900;letter-spacing:1.7px}
+.rpg-world-copy h1{margin:14px 0 9px;color:#fff;font:800 clamp(25px,3vw,36px)/1.1 Manrope;letter-spacing:-1.2px}
+.rpg-world-copy p{max-width:480px;color:#e4dcef;font-size:12px;line-height:1.8}
+.rpg-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+.rpg-primary{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:11px;padding:12px 16px;background:#fff;color:#49317e;font-size:11px;font-weight:900;cursor:pointer}
+.rpg-tutor-chip,.rpg-complete{display:inline-flex;align-items:center;gap:7px;color:#f4eaff;font-size:10px;font-weight:700}
+.rpg-world-art{position:relative;min-height:230px;display:flex;align-items:center;justify-content:center;padding:20px}
+.rpg-world-art:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#e2c8ff25;filter:blur(20px)}
+.rpg-world-art img{position:relative;width:100%;height:220px;object-fit:contain;filter:drop-shadow(0 12px 22px #120b2b70)}
+.rpg-world-level{position:absolute;right:24px;bottom:22px;width:62px;height:62px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#4e367f;box-shadow:0 8px 22px #120b2b55}
+.rpg-world-level span{font-size:8px;font-weight:900;letter-spacing:1px}.rpg-world-level b{font:900 25px Manrope}
+.rpg-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.rpg-stat-grid article{min-width:0;display:flex;flex-direction:column;gap:5px;padding:16px;border:1px solid #eae5f1;border-radius:16px;background:#fff;box-shadow:0 6px 20px #27184c08}
+.rpg-stat-grid article>b{font:900 23px Manrope;color:#302344}.rpg-stat-grid article>small{font-size:9px;color:#827b92}.rpg-stat-grid article>em{font-size:9px;font-style:normal;color:#a29aad}
+.rpg-stat-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center}.rpg-stat-icon.xp{background:#f0eafd;color:#7652d5}.rpg-stat-icon.coins{background:#fff4dc;color:#c38b2e}.rpg-stat-icon.streak{background:#ffede8;color:#e57953}.rpg-stat-icon.progress{background:#e8f7f0;color:#42a781}
+.rpg-xp-track,.rpg-region-progress,.rpg-quest-track{height:6px;overflow:hidden;border-radius:99px;background:#f0edf6}.rpg-xp-track i,.rpg-region-progress i,.rpg-quest-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8060d9,#e68db8)}
+.rpg-section-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.rpg-section-heading>div>span{font-size:9px;font-weight:900;letter-spacing:1.5px;color:#927bbd}
+.rpg-section-heading h2{margin:5px 0;font:800 18px Manrope;color:#2b213d;letter-spacing:-.4px}
+.rpg-section-heading p{margin:0;color:#898195;font-size:10px;line-height:1.6}
+.rpg-map-badge{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border:1px solid #e9e2f1;border-radius:99px;color:#7457b5;background:#fff;font-size:9px;font-weight:800;white-space:nowrap}
+.rpg-region-list{display:grid;gap:11px}
+.rpg-region{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:start;gap:13px;padding:16px;border:1px solid #eae5f1;border-radius:17px;background:#fff}
+.rpg-region-marker{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:#f0eafd;color:#7958c9}
+.rpg-region.is-complete .rpg-region-marker{background:#e6f7ef;color:#3b9b76}
+.rpg-region.is-locked .rpg-region-marker{background:#f1eff4;color:#a39cab}
+.rpg-region-title{display:flex;flex-direction:column;gap:3px}.rpg-region-title>span{font-size:8px;letter-spacing:1.2px;font-weight:900;color:#9b8bb8}.rpg-region-title>b{font-size:13px;color:#3b304c}.rpg-region-title>small,.rpg-region-count{font-size:9px;color:#938b9f}
+.rpg-region-progress{margin:10px 0 5px;max-width:420px}
+.rpg-node-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.rpg-node{position:relative;width:35px;height:35px;border:1px solid #e9e3f0;border-radius:12px;display:grid;place-items:center;background:#f7f4fb;color:#9889b2;cursor:pointer}
+.rpg-node span{position:absolute;right:-4px;top:-5px;min-width:14px;height:14px;padding:0 3px;border-radius:99px;background:#fff;border:1px solid #e8e2ef;color:#81768f;font-size:8px;line-height:12px}
+.rpg-node.available{background:#7652d5;color:#fff;border-color:#7652d5;box-shadow:0 4px 12px #7652d533}
+.rpg-node.done{background:#e8f7f0;color:#3b9b76;border-color:#c9eadb}
+.rpg-node:disabled{cursor:not-allowed;opacity:.62}
+.rpg-region-reward{display:flex;align-items:center;gap:4px;color:#b28a42;font-size:9px;font-weight:900;white-space:nowrap}
+.rpg-lower-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rpg-quest-panel,.rpg-achievement-panel{padding:18px;border:1px solid #eae5f1;border-radius:18px;background:#fff}
+.rpg-section-heading.compact{align-items:center;margin-bottom:12px}
+.rpg-section-heading.compact h2{font-size:15px}.rpg-section-heading.compact>svg{color:#8a70c5}
+.rpg-quest,.rpg-achievement{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-top:1px solid #f1edf5}
+.quest-icon,.quest-done{flex:none;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:#f0eafd;color:#7958c9}
+.quest-done{background:#e6f7ef;color:#3b9b76}
+.rpg-quest-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.rpg-quest-copy>b,.rpg-achievement b{font-size:10px;color:#413650}
+.rpg-quest-copy>small,.rpg-achievement small{font-size:9px;color:#958da1;line-height:1.5}
+.rpg-quest-track{max-width:100%;height:5px}
+.rpg-achievement>span{font-size:20px;filter:grayscale(1);opacity:.65}.rpg-achievement.unlocked>span{filter:none;opacity:1}
+.rpg-achievement>div{flex:1;display:flex;flex-direction:column;gap:4px}.rpg-achievement>strong{font-size:8px;color:#8b77b5;white-space:nowrap}
+.rpg-achievement.unlocked>strong{color:#3b9b76}
+.rpg-empty{padding:16px;border-radius:12px;background:#f8f6fb;color:#8e8699;font-size:10px;line-height:1.7}
+@media(max-width:900px){.rpg-world-hero{grid-template-columns:1fr .7fr}.rpg-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.rpg-world-hero{grid-template-columns:1fr}.rpg-world-copy{padding:23px 21px 8px}.rpg-world-art{min-height:165px;padding:0 18px 12px}.rpg-world-art img{height:165px}.rpg-world-level{right:18px;bottom:13px;width:52px;height:52px}.rpg-stat-grid{gap:8px}.rpg-stat-grid article{padding:12px}.rpg-stat-grid article>b{font-size:20px}.rpg-region{grid-template-columns:34px minmax(0,1fr);gap:10px;padding:12px}.rpg-region-marker{width:34px;height:34px}.rpg-region-reward{grid-column:2}.rpg-lower-grid{grid-template-columns:1fr}.rpg-section-heading h2{font-size:16px}}
