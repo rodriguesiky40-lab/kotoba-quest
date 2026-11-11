@@ -33,7 +33,7 @@ export default function RpgJourney({ languageName, languageFlag, tutorName, stat
           <span className="rpg-tutor-chip">{languageFlag} Guiado por {tutorName}</span>
         </div>
       </div>
-      <div className="rpg-world-art"><img src="/assets/world/japan_learning_world_map.webp" alt="Mapa ilustrado da jornada Kotoba Quest"/><div className="rpg-world-level"><span>NÍVEL</span><b>{level}</b></div></div>
+      <div className="rpg-world-art">{languageCode==="ja"?<img src="/assets/world/japan_learning_world_map.webp" alt="Mapa ilustrado da jornada Kotoba Quest"/>:<div className="rpg-language-world" aria-label={`Mundo de ${languageName}`}>{languageFlag}<span>{languageName}</span></div>}<div className="rpg-world-level"><span>NÍVEL</span><b>{level}</b></div></div>
     </section>
 
     <section className="rpg-stat-grid">
