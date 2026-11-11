@@ -2,7 +2,7 @@
 
 import { BookOpen, CheckCircle2, ChevronRight, Coins, Flame, LockKeyhole, MapPinned, Sparkles, Star, Target, Trophy, Zap } from "lucide-react";
 
-type Lesson = { id:string; title:string; description:string; xp_reward:number; questions:{id:string}[] };
+type Lesson = { id:string; unit_id:string; title:string; description:string; lesson_type:string; xp_reward:number; sort_order:number; questions:{id:string; lesson_id:string; prompt:string; prompt_translation:string|null; question_type:string; options:string[]; sort_order:number}[] };
 type Unit = { id:string; title:string; description:string; lessons:Lesson[] };
 type Progress = { status:"locked"|"in_progress"|"completed"; best_score:number; attempts_count:number };
 type Stats = { total_xp:number; coins:number; hearts:number; current_streak:number; longest_streak:number };
