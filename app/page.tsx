@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import LandingHome from "@/components/landing-home";
+import RpgJourney from "@/components/rpg-journey";
 import {
-  Activity, BookOpen, Check, ChevronDown, ChevronRight, CircleHelp, Coins, Crown, Flame,
+  Activity, BookOpen, Check, ChevronDown, ChevronRight, CircleHelp, Coins, Crown, Flame, MapPinned,
   GraduationCap, Heart, Home, Languages, Lock, LogIn, LogOut, Menu, MessageCircle,
   Send, Settings, ShieldCheck, Sparkles, Target, Trophy, UserRound, Volume2, X, Zap
 } from "lucide-react";
@@ -247,7 +248,7 @@ export default function HomePage() {
   const levelProgress = stats.total_xp % 200;
   const admin = session?.user.app_metadata?.role === "admin";
   const navItems = [
-    { label: "Aprender", icon: Home }, ...(selectedLanguageCode === "ja" ? [{ label: "Histórias", icon: BookOpen }] : []),
+    { label: "Aprender", icon: Home }, { label: "Jornada RPG", icon: MapPinned }, ...(selectedLanguageCode === "ja" ? [{ label: "Histórias", icon: BookOpen }] : []),
     { label: "Conversar", icon: MessageCircle }, { label: "Ranking", icon: Trophy }, { label: "Meu perfil", icon: UserRound },
     { label: "Aiko", icon: Sparkles }, { label: "Emily", icon: Sparkles }, { label: "Hana", icon: Sparkles }, { label: "Sofía", icon: Sparkles }, { label: "Chloé", icon: Sparkles }, { label: "Premium", icon: Crown },
     ...(admin ? [{ label: "Administração", icon: ShieldCheck }] : [])
@@ -441,6 +442,8 @@ export default function HomePage() {
             <section className="achievement-section"><div className="section-heading"><div><div className="eyebrow">SUAS CONQUISTAS</div><h2>Marcos da sua jornada</h2></div><span className="unit-pill">{achievements.filter(a=>a.unlocked_at).length}/{achievements.length} DESBLOQUEADAS</span></div><div className="achievement-grid">{achievements.map(a=><article className={`achievement-card ${a.unlocked_at?"unlocked":"locked"}`} key={a.id}><div className="achievement-icon">{a.icon}</div><div><b>{a.title}</b><span>{a.description}</span></div><strong>+{a.xp_reward} XP</strong></article>)}</div></section>
             {selectedLanguageCode === "ja" && <><section className="scene-grid"><article className="scene-tile"><img src="/assets/scenarios/japanese_classroom.webp" alt="Sala de aula japonesa"/><div><b>Sala da Aiko</b><span>Aprenda o essencial</span></div></article><article className="scene-tile"><img src="/assets/scenarios/kyoto_traditional_street.webp" alt="Rua tradicional de Kyoto"/><div><b>Kyoto tradicional</b><span>Descubra a cultura</span></div></article><article className="scene-tile"><img src="/assets/scenarios/tokyo_city_street.webp" alt="Rua de Tóquio"/><div><b>Tóquio à noite</b><span>Pratique conversação</span></div></article><article className="scene-tile"><img src="/assets/scenarios/japanese_shop.webp" alt="Loja japonesa"/><div><b>Loja japonesa</b><span>Vocabulário do dia a dia</span></div></article></section></>}
           </>}
+
+          {tab === "Jornada RPG" && <RpgJourney languageName={selectedLanguage.name} languageFlag={selectedLanguage.flag} tutorName={tutorNames[selectedLanguage.tutor]} stats={stats} units={units} progress={Object.fromEntries(progressRows.map(row=>[row.lesson_id,row]))} quests={quests} achievements={achievements} onStartLesson={openLesson} />}
 
           {tab === "Histórias" && <div className="page-view"><div className="eyebrow">APRENDA PELO CONTEXTO</div><h1>Histórias interativas</h1><p className="muted">Entre em pequenas aventuras, escolha respostas e aprenda expressões que fazem sentido no cotidiano.</p><div className="story-grid">{storyContent.map((story,i) => <article key={story.id}><img src={story.image} alt=""/><div><span>INICIANTE · {story.duration.toUpperCase()}</span><h2>{story.title}</h2><p>{story.subtitle}</p><button className="primary-button" onClick={() => startStory(i)}>Começar história <ChevronRight size={15}/></button></div></article>)}</div></div>}
 
