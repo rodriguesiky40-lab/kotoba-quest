@@ -9,8 +9,8 @@ type Stats = { total_xp:number; coins:number; hearts:number; current_streak:numb
 type Quest = { id:string; title:string; description:string; goal_value:number; reward_xp:number; progress_value:number; completed_at:string|null };
 type Achievement = { id:string; title:string; description:string; icon:string; xp_reward:number; unlocked_at:string|null };
 
-export default function RpgJourney({ languageName, languageFlag, tutorName, stats, units, progress, quests, achievements, onStartLesson }: {
-  languageName:string; languageFlag:string; tutorName:string; stats:Stats; units:Unit[];
+export default function RpgJourney({ languageName, languageCode, languageFlag, tutorName, stats, units, progress, quests, achievements, onStartLesson }: {
+  languageName:string; languageCode:string; languageFlag:string; tutorName:string; stats:Stats; units:Unit[];
   progress:Record<string,Progress>; quests:Quest[]; achievements:Achievement[];
   onStartLesson:(lesson:Lesson, locked:boolean)=>void;
 }) {
