@@ -1,9 +1,8 @@
 "use client";
 
 import { BookOpen, CheckCircle2, ChevronRight, Coins, Flame, LockKeyhole, MapPinned, Sparkles, Star, Target, Trophy, Zap } from "lucide-react";
+import type { Lesson, Unit } from "@/lib/game-engine";
 
-type Lesson = { id:string; unit_id:string; title:string; description:string; lesson_type:string; xp_reward:number; sort_order:number; questions:{id:string; lesson_id:string; prompt:string; prompt_translation:string|null; question_type:string; options:string[]; sort_order:number}[] };
-type Unit = { id:string; title:string; description:string; lessons:Lesson[] };
 type Progress = { status:"locked"|"in_progress"|"completed"; best_score:number; attempts_count:number };
 type Stats = { total_xp:number; coins:number; hearts:number; current_streak:number; longest_streak:number };
 type Quest = { id:string; title:string; description:string; goal_value:number; reward_xp:number; progress_value:number; completed_at:string|null };
@@ -37,10 +36,10 @@ export default function RpgJourney({ languageName, languageCode, languageFlag, t
     </section>
 
     <section className="rpg-stat-grid">
-      <article><span className="rpg-stat-icon xp"><Zap size={18}/></span><b>{stats.total_xp.toLocaleString("pt-BR")}</b><small>Experiência total</small><div className="rpg-xp-track"><i style={{width:(levelXp/200*100)+"%"}}/></div><small>{levelXp}/200 XP para o próximo nível</small></article>
-      <article><span className="rpg-stat-icon coins"><Coins size={18}/></span><b>{stats.coins.toLocaleString("pt-BR")}</b><small>Kotoba Coins</small><em>Recompensas das lições</em></article>
-      <article><span className="rpg-stat-icon streak"><Flame size={18}/></span><b>{stats.current_streak}</b><small>Dias de sequência</small><em>Recorde: {stats.longest_streak} dias</em></article>
-      <article><span className="rpg-stat-icon progress"><Target size={18}/></span><b>{percent}%</b><small>Trilha concluída</small><em>{completed} de {lessons.length} lições</em></article>
+      <article><span className="rpg-stat-icon xp"><Zap size={18}/></span><b suppressHydrationWarning>{stats.total_xp}</b><small>Experiência total</small><div className="rpg-xp-track"><i style={{width:(levelXp/200*100)+"%"}}/></div><small>{levelXp}/200 XP para o próximo nível</small></article>
+      <article><span className="rpg-stat-icon coins"><Coins size={18}/></span><b suppressHydrationWarning>{stats.coins}</b><small>Kotoba Coins</small><em>Recompensas das lições</em></article>
+      <article><span className="rpg-stat-icon streak"><Flame size={18}/></span><b suppressHydrationWarning>{stats.current_streak}</b><small>Dias de sequência</small><em>Recorde: {stats.longest_streak} dias</em></article>
+      <article><span className="rpg-stat-icon progress"><Target size={18}/></span><b suppressHydrationWarning>{percent}%</b><small>Trilha concluída</small><em>{completed} de {lessons.length} lições</em></article>
     </section>
 
     <section className="rpg-map-section">
@@ -50,7 +49,6 @@ export default function RpgJourney({ languageName, languageCode, languageFlag, t
           const unitDone=unit.lessons.filter(l=>progress[l.id]?.status==="completed").length;
           const allDone=unit.lessons.length>0&&unitDone===unit.lessons.length;
           const unlocked=previousUnitDone;
-          const firstOpen=unit.lessons.findIndex(l=>progress[l.id]?.status!=="completed");
           previousUnitDone=allDone;
           return <article className={`rpg-region ${allDone?"is-complete":unlocked?"is-open":"is-locked"}`} key={unit.id}>
             <div className="rpg-region-marker">{allDone?<CheckCircle2 size={21}/>:unlocked?<MapPinned size={21}/>:<LockKeyhole size={19}/>}</div>

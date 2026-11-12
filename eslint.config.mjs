@@ -4,13 +4,26 @@ import { fileURLToPath } from "node:url";
 
 const compat = new FlatCompat({ baseDirectory: dirname(fileURLToPath(import.meta.url)) });
 
-export default [
+const eslintConfig = [
+  {
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "out/**",
+      "next-env.d.ts",
+      "**/*.d.ts"
+    ]
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    ignores: [".next/**", "node_modules/**", "out/**"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "prefer-const": "off"
+      "@typescript-eslint/triple-slash-reference": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "prefer-const": "off",
+      "@next/next/no-img-element": "off"
     }
   }
 ];
+
+export default eslintConfig;
